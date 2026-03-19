@@ -1,0 +1,284 @@
+# ⚖️ STACK 48: LOAD BALANCING & PROXY
+## Distributing Traffic Across Servers
+
+---
+
+## 🔰 What is Load Balancing?
+
+Load balancing distributes incoming network traffic across multiple servers to ensure no single server gets overwhelmed.
+
+### Why Use Load Balancing?
+- **High availability**: If one server fails, others handle the traffic
+- **Scalability**: Add more servers as traffic grows
+- **Performance**: Distributes load across resources
+- **Security**: Hides backend server IPs
+
+---
+
+## 🏗️ Load Balancing Methods
+
+### OSI Layer Classification
+| Layer | Type | Examples |
+|-------|------|----------|
+| Layer 4 | Transport | TCP/UDP balancing |
+| Layer 7 | Application | HTTP/HTTPS routing |
+
+### Algorithms
+| Algorithm | Description |
+|-----------|-------------|
+| Round Robin | Sequential distribution |
+| Least Connections | Route to fewest active connections |
+| IP Hash | Same IP to same server |
+| Weighted | More traffic to powerful servers |
+| Least Time | Fastest response time |
+
+---
+
+## ⚙️ HAProxy Setup
+
+### Installation
+```bash
+# Install
+sudo apt install haproxy
+
+# Start and enable
+sudo systemctl enable --now haproxy
+```
+
+### Basic Configuration
+```ini
+# /etc/haproxy/haproxy.cfg
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    option  http-server-close
+    option  forwardfor except 127.0.0.0/8
+    option  redispatch
+    retries 3
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
+
+frontend http_front
+    bind *:80
+    bind *:443 ssl crt /etc/ssl/certs/server.pem
+    redirect scheme https if !{ ssl_fc }
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    option httpchk
+    http-check expect status 200
+    server web1 192.168.1.10:80 check inter 2000 rise 2 fall 3
+    server web2 192.168.1.11:80 check inter 2000 rise 2 fall 3
+    server web3 192.168.1.12:80 check inter 2000 rise 2 fall 3
+
+listen stats
+    bind *:8404
+    stats enable
+    stats uri /stats
+    stats refresh 30s
+    stats auth admin:password
+```
+
+### More Options
+```ini
+# Weighted load balancing
+server web1 192.168.1.10:80 weight 100
+server web2 192.168.1.11:80 weight 200
+
+# Least connections
+backend app_servers
+    balance leastconn
+    server app1 192.168.1.20:8080
+    server app2 192.168.1.21:8080
+```
+
+---
+
+## 🌐 Nginx as Load Balancer
+
+### Installation
+```bash
+# Install Nginx
+sudo apt install nginx
+```
+
+### Basic Configuration
+```nginx
+# /etc/nginx/sites-available/loadbalancer
+upstream backend {
+    least_conn;
+    server 192.168.1.10:80 weight=2;
+    server 192.168.1.11:80;
+    server 192.168.1.12:80 backup;
+}
+
+server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
+### Health Checks
+```nginx
+upstream backend {
+    least_conn;
+    
+    server 192.168.1.10:80 max_fails=3 fail_timeout=30s;
+    server 192.168.1.11:80 max_fails=3 fail_timeout=30s;
+}
+```
+
+---
+
+## 🌪️ DNS Load Balancing
+
+### Round Robin DNS
+```bash
+# In zone file
+example.com.  IN  A  192.168.1.10
+example.com.  IN  A  192.168.1.11
+example.com.  IN  A  192.168.1.12
+```
+
+### Tools
+```bash
+# Check DNS records
+dig example.com
+
+# Multiple records
+host example.com
+```
+
+---
+
+## 🖥️ Application Load Balancer (AWS-style)
+
+### Concept
+```bash
+# ALB features:
+# - Layer 7 (HTTP/HTTPS) routing
+# - Path-based routing
+# - Host-based routing
+# - SSL termination
+# - Health checks
+```
+
+---
+
+## 🏆 Practice Exercises
+
+### Exercise 1: Install HAProxy
+```bash
+# Install
+sudo apt install haproxy
+
+# Create basic config
+sudo nano /etc/haproxy/haproxy.cfg
+
+# Test config
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Restart
+sudo systemctl restart haproxy
+
+# Test
+curl localhost
+```
+
+### Exercise 2: Configure Nginx LB
+```bash
+# Create upstream config
+sudo tee /etc/nginx/conf.d/upstream.conf << 'EOF'
+upstream backend {
+    server 192.168.1.10:80;
+    server 192.168.1.11:80;
+}
+EOF
+
+# Reload
+sudo systemctl reload nginx
+```
+
+### Exercise 3: Health Check Script
+```bash
+#!/bin/bash
+# health_check.sh
+
+# Check each backend
+for server in 192.168.1.10 192.168.1.11; do
+    if curl -sf "http://$server/health" > /dev/null; then
+        echo "✓ $server OK"
+    else
+        echo "✗ $server DOWN"
+    fi
+done
+```
+
+---
+
+## 📋 Load Balancing Cheat Sheet
+
+| Tool | Type | Best For |
+|------|------|----------|
+| HAProxy | L4/L7 | High performance |
+| Nginx | L7 | Web applications |
+| AWS ALB | Cloud | AWS environments |
+| DNS round robin | DNS | Simple setups |
+
+### HAProxy Commands
+```bash
+# Check config
+haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Stats
+curl http://localhost:8404/stats
+
+# Reload
+systemctl reload haproxy
+```
+
+---
+
+## ✅ Stack 48 Complete!
+
+You learned:
+- ✅ Load balancing concepts
+- ✅ HAProxy setup and configuration
+- ✅ Nginx as load balancer
+- ✅ DNS load balancing
+- ✅ Health checks
+- ✅ Algorithms and methods
+
+### Next: Stack 49 - High Availability →
+
+---
+
+*End of Stack 48*

@@ -1,0 +1,21 @@
+id,name,email,age,city,department,salary,join_date
+1,John Smith,john.smith@example.com,32,New York,Engineering,85000,2020-03-15
+2,Jane Doe,jane.doe@example.com,28,Los Angeles,Marketing,72000,2021-06-01
+3,Bob Johnson,bob.johnson@example.com,45,Chicago,Sales,95000,2018-11-20
+4,Alice Brown,alice.brown@example.com,31,New York,Engineering,88000,2019-08-10
+5,Charlie Wilson,charlie.wilson@example.com,29,Houston,Marketing,68000,2022-01-05
+6,Diana Martinez,diana.martinez@example.com,35,Phoenix,Engineering,92000,2017-04-22
+7,Edward Lee,edward.lee@example.com,42,Philadelphia,Sales,88000,2016-09-14
+8,Fiona Garcia,fiona.garcia@example.com,27,San Antonio,Marketing,65000,2023-02-28
+9,George Taylor,george.taylor@example.com,38,San Diego,Engineering,91000,2018-07-03
+10,Hannah Anderson,hannah.anderson@example.com,33,Dallas,HR,78000,2019-12-11
+11,Ian Thomas,ian.thomas@example.com,41,San Jose,Sales,99000,2015-05-19
+12,Julia Jackson,julia.jackson@example.com,30,Austin,Engineering,86000,2020-10-25
+13,Kevin White,kevin.white@example.com,36,Jacksonville,Marketing,79000,2017-08-07
+14,Laura Harris,laura.harris@example.com,29,Fort Worth,HR,72000,2021-03-30
+15,Michael Clark,michael.clark@example.com,47,Columbus,Sales,105000,2014-11-12
+16,Nancy Lewis,nancy.lewis@example.com,34,Charlotte,Engineering,89000,2018-01-18
+17,Oliver Robinson,oliver.robinson@example.com,32,Indianapolis,Marketing,75000,2020-07-22
+18,Patricia Walker,patricia.walker@example.com,39,Seattle,Engineering,98000,2016-04-05
+19,Quinn Young,quinn.young@example.com,26,Denver,HR,62000,2023-06-14
+20,Rachel King,rachel.king@example.com,37,Washington,Sales,92000,2017-02-28

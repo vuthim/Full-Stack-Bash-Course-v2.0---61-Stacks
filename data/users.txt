@@ -1,0 +1,13 @@
+# Sample user data file (for practice)
+# Format: username:password:uid:gid:full_name:home_dir:shell
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+admin:x:1000:1000:Admin User:/home/admin:/bin/bash
+jsmith:x:1001:1001:John Smith:/home/jsmith:/bin/bash
+mjane:x:1002:1002:Jane Doe:/home/mjane:/bin/bash
+bobwilson:x:1003:1003:Bob Wilson:/home/bobwilson:/bin/bash
+alice:x:1004:1004:Alice Brown:/home/alice:/bin/bash
+charlie:x:1005:1005:Charlie Davis:/home/charlie:/bin/bash
