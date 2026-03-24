@@ -53,7 +53,7 @@ uname -a          # System information
 ## ⌨️ Command Structure
 
 ```
-command [options] [arguments]
+command [options] [arguments] 
 
 ls -l /home
 │  │  │   │
