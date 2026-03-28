@@ -1,7 +1,7 @@
 # 🐚 Full Stack Bash Course - Expert Edition
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Bash-61%20Stacks-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+  <img src="https://img.shields.io/badge/Bash-65%20Stacks-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
   <img src="https://img.shields.io/badge/Level-Beginner%20to%20Expert-4EAA25?style=for-the-badge" alt="Level">
   <img src="https://img.shields.io/badge/License-MIT-4EAA25?style=for-the-badge" alt="License">
 </p>
@@ -17,14 +17,13 @@
 | Level | Stacks | Topics |
 |-------|--------|--------|
 | **Beginner** | 1-10 | Fundamentals, File Ops, Variables, Loops, Functions |
-| **Beginner+** | 3B | Quoting, Expansion, Safe File Handling ⭐ |
-| **Intermediate** | 11-12 | Process Management, Advanced Scripting |
-| **Intermediate+** | 12B | POSIX Portability ⭐ |
-| **Advanced** | 13-30 | Cron, Git, Docker, SSH, Security, CI/CD |
-| **Expert** | 31-48 | Kubernetes, Terraform, Monitoring, Networking |
-| **Master** | 51-58 | APIs, Debugging, IPC, Security Forensics |
-
-⭐ = New lessons added to meet industry standards
+| **Intermediate** | 11-15 | Process Management, Advanced Scripting, Cron |
+| **Advanced** | 16-30 | Docker, SSH, AWS, Security, Testing |
+| **DevOps** | 31-41 | Kubernetes, Terraform, Ansible, CI/CD |
+| **Infrastructure** | 42-49 | Raspberry Pi, WSL, Load Balancing, HA |
+| **Security & Ops** | 50-55 | Email, DNS, SSL, TUI, IPC |
+| **Expert** | 56-61 | Forensics, Data Structures, APIs, Multi-Cluster |
+| **Specialization** | 62-65 | Kernel Tuning, Network Namespaces, Log Aggregation, Service Mesh |
 
 ---
 
@@ -44,25 +43,89 @@ chmod +x start_course.sh
 
 ---
 
-## 📚 Course Structure (61 Stacks)
+## 📚 Course Structure (65 Stacks)
 
 ### Core Bash Track
 | Stack | Topic |
 |-------|-------|
-| 1-10 | Bash Fundamentals |
-| **3B** | Quoting, Expansion & Safe File Handling ⭐ |
-| 11-12 | Advanced Scripting |
-| **12B** | Bash Portability & POSIX ⭐ |
-| 13-30 | Automation & Production Skills |
+| 1 | Bash Fundamentals |
+| 2 | File & Directory Operations |
+| 3 | File Viewing, Editing & Safe Handling |
+| 4 | Text Processing Tools |
+| 5 | Variables & Data Types |
+| 6 | Control Flow (if/else, case) |
+| 7 | Loops (for, while, until) |
+| 8 | Functions |
+| 9 | Input/Output & Redirection |
+| 10 | Regular Expressions |
+| 11 | Process Management |
+| 12 | Advanced Scripting |
+| 12B | POSIX Portability |
 
-### Electives [Optional]
+### Intermediate Track
 | Stack | Topic |
 |-------|-------|
+| 13 | Cron Scheduling |
+| 14 | Git for Scripts |
+| 15 | Docker & Bash |
+| 16 | SSH Remote |
+| 17 | Network Scripting |
+| 18 | System Monitoring |
+| 19 | AWS CLI |
+| 20 | Database Operations |
+| 21 | Web Scraping & curl |
+| 22 | Testing Bash Scripts |
+| 23 | Security Scripting |
+| 24 | Advanced Scheduling (Cron vs Systemd Timers) |
 | 25 | Zsh Essentials |
-| 26 | Vim for Scripters |
-| 42 | Raspberry Pi Projects |
+
+### DevOps Track
+| Stack | Topic |
+|-------|-------|
+| 26 | Vim Editor |
+| 27 | Systemd |
+| 28 | Package Management |
+| 29 | CI/CD Pipelines |
+| 30 | Logging |
+| 31 | Kubernetes |
+| 32 | User Management |
+| 33 | LVM |
+| 34 | NFS & Samba |
+| 35 | Firewall |
+| 36 | Terraform |
+| 37 | Monitoring Stack |
+| 38 | Ansible |
+| 39 | System Hardening |
+| 40 | GitLab CI |
+| 41 | Performance Tuning |
+
+### Specialization Track
+| Stack | Topic |
+|-------|-------|
+| 42 | Raspberry Pi |
 | 43 | Windows WSL |
-| 59 | Multi-Cluster Orchestration |
+| 44 | ShellCheck |
+| 45 | Advanced Patterns |
+| 46 | Career & Production |
+| 47 | Advanced Git |
+| 48 | Load Balancing |
+| 49 | High Availability |
+| 50 | Email Server |
+| 51 | DNS Management |
+| 52 | SSL/TLS Certificates |
+| 53 | Terminal UI |
+| 54 | IPC Mechanisms |
+| 55 | Advanced Debugging |
+| 56 | Security Forensics |
+| 57 | Data Structures |
+| 58 | API Services |
+| 59 | Multi-Cluster |
+| 60 | AWK Deep Dive |
+| 61 | tmux & Screen |
+| 62 | Kernel Tuning (sysctl) |
+| 63 | Network Namespaces |
+| 64 | Log Aggregation (ELK/Loki) |
+| 65 | Service Mesh Basics |
 
 ---
 
@@ -70,13 +133,12 @@ chmod +x start_course.sh
 
 ```
 bash-course/
-├── lessons/           # 61 comprehensive lessons
-├── solutions/         # 61 solution files
+├── lessons/           # 65 comprehensive lessons
+├── solutions/         # Solution files
 ├── scripts/           # Utility scripts
 ├── start_course.sh    # Interactive course launcher
 ├── COURSE_OUTLINE.md  # Course structure
-├── CURRICULUM_REVIEW.md # Curriculum analysis
-└── README.md          # This file
+└── README.md         # This file
 ```
 
 ---
@@ -84,52 +146,39 @@ bash-course/
 ## 📖 Learning Path
 
 ```
-Beginner (Stacks 1-10)
+Beginner (Stacks 1-12)
     ↓
-Beginner+ (Stack 3B) ⭐
+Intermediate (Stacks 13-25)
     ↓
-Intermediate (Stacks 11-12)
+Advanced (Stacks 26-41)
     ↓
-Intermediate+ (Stack 12B) ⭐
+Infrastructure (Stacks 42-49)
     ↓
-Advanced (Stacks 13-30)
+Security & Ops (Stacks 50-55)
     ↓
-Expert (Stacks 31-48)
+Expert (Stacks 56-61)
     ↓
-Master (Stacks 51-58)
-    ↓
-Specialization (Electives)
+Specialization (Stacks 62-65)
 ```
-
----
-
-## ✨ New Features (Expert Edition)
-
-### Stack 3B: Quoting, Expansion & Safe File Handling
-- Single quotes vs double quotes
-- Shell expansion (brace, tilde, parameter, command, arithmetic)
-- `"$@"` vs `"$*"`
-- Word splitting dangers
-- Shell options (shopt)
-
-### Stack 12B: Bash Portability & POSIX
-- POSIX vs Bash features
-- Shebang decisions
-- Writing portable scripts
-- Testing for POSIX compliance
-
-### Expanded Stack 12: Professional Scripting
-- Comprehensive `set -euo pipefail` guide
-- Professional `trap` usage
-- Professional `getopts` parsing
 
 ---
 
 ## 📋 Prerequisites
 
+### What You Need
 - Computer with terminal access (Linux, macOS, or WSL)
 - Basic computer knowledge
 - **No prior coding experience needed!**
+
+### Recommended Background
+- Familiarity with using a computer
+- Basic command line knowledge (helpful but not required)
+- Access to a Linux system or WSL for hands-on practice
+
+### Tools You'll Use
+- Linux terminal or WSL
+- Text editor (vim, nano, or VS Code)
+- Git (for version control lessons)
 
 ---
 
@@ -138,15 +187,18 @@ Specialization (Electives)
 | Phase | Time |
 |-------|------|
 | Core Bash (1-12B) | 1-2 months |
-| Production Ready (13-48) | 3-5 months |
-| Expert (51-58) | 1-2 months |
-| **Total** | **4-8 months** |
+| Intermediate (13-25) | 1-2 months |
+| Advanced/DevOps (26-41) | 2-3 months |
+| Infrastructure (42-49) | 1 month |
+| Expert (50-61) | 1-2 months |
+| Specialization (62-65) | 1 month |
+| **Total** | **6-10 months** |
 
 ---
 
 ## 🎓 Certification
 
-Complete all 61 stacks to earn your **Full Stack Bash Developer Certificate**!
+Complete all 65 stacks to earn your **Full Stack Bash Developer Certificate**!
 
 ---
 
