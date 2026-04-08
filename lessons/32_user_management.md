@@ -303,19 +303,62 @@ developer ALL=(ALL) /usr/bin/systemctl status nginx
 
 ---
 
+## 🎓 Final Project: User & Group Manager
+
+Now that you've mastered the commands for managing users and groups, let's see how a professional system administrator might automate these tasks. We'll examine the "User Manager" — a tool that simplifies creating accounts, managing group memberships, and handling security locks.
+
+### What the User & Group Manager Does:
+1. **Lists All Users** in a clean, readable table format.
+2. **Simplifies Account Creation** with home directories and default shells.
+3. **Manages Group Membership** (add/remove users) with one-word commands.
+4. **Controls Sudo Access** safely without manual `visudo` editing.
+5. **Locks and Unlocks Accounts** instantly for security purposes.
+6. **Cleans Up Home Directories** automatically when a user is deleted.
+
+### Key Snippet: Clean User Listing
+The manager uses `getent` and `awk` to parse the system's user database and present it in a human-friendly table.
+
+```bash
+cmd_list() {
+    echo "=== System Users ==="
+    # getent: safely read the passwd database
+    # awk: extract username, UID, home dir, and shell
+    # column -t: align the output into perfect columns
+    getent passwd | awk -F: '{print $1, $3, $6, $7}' | column -t
+}
+```
+
+### Key Snippet: Managing Sudo Access
+Adding a user to the `sudo` group is a common but sensitive task. The manager makes it a simple, repeatable command.
+
+```bash
+cmd_sudo() {
+    local user=$1
+    
+    # -aG: Append to Group (don't overwrite their existing groups!)
+    sudo usermod -aG sudo "$user"
+    log "User '$user' now has administrative (sudo) access."
+}
+```
+
+**Pro Tip:** Automation tools like this prevent "fat-finger" mistakes (like accidentally deleting the wrong user) by standardizing the way you interact with the system's identity files.
+
+---
+
 ## ✅ Stack 32 Complete!
 
-You learned:
-- ✅ User types and UID
-- ✅ Creating users with useradd
-- ✅ Managing passwords
-- ✅ Modifying users
-- ✅ Deleting users
-- ✅ Managing groups
-- ✅ Sudo access
-- ✅ Viewing user info
+Congratulations! You've successfully mastered the "Identity and Access Management" of your Linux system! You can now:
+- ✅ **Manage user accounts** (Create, Modify, Delete) like a pro
+- ✅ **Master passwords and security** by locking and unlocking accounts
+- ✅ **Organize users into groups** for efficient permission management
+- ✅ **Control Sudo access** to grant administrative privileges safely
+- ✅ **Audit system users** and understand UIDs and GIDs
+- ✅ **Handle home directories** and default shell configurations
 
-### Next: Stack 33 - LVM →
+### What's Next?
+In the next stack, we'll dive into **LVM (Logical Volume Management)**. You'll learn how to manage your hard drive space like a pro, allowing you to resize disks without rebooting!
+
+**Next: Stack 33 - LVM →**
 
 ---
 

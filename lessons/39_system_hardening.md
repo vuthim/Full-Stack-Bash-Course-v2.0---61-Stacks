@@ -331,17 +331,66 @@ ssh-copy-id admin@server
 
 ---
 
+## 🎓 Final Project: System Security Hardening Tool
+
+Now that you've mastered the concepts of system hardening, let's see how a professional security engineer might automate the lockdown of their servers. We'll examine the "Security Hardening Tool" — a script that performs a full security audit, checks for vulnerabilities, and enforces strict permission policies automatically.
+
+### What the System Security Hardening Tool Does:
+1. **Performs a Full Security Audit** showing system info, open ports, and failed logins.
+2. **Audits Critical File Permissions** (e.g., `/etc/shadow`) to ensure they are secure.
+3. **Identifies SUID Files** which are common targets for "privilege escalation" attacks.
+4. **Hardens SSH Configuration** by disabling root login and password authentication.
+5. **Enforces Firewall Policies** (UFW or Firewalld) to deny all unauthorized incoming traffic.
+6. **Audits User Accounts** for inactive users who may need to be locked.
+
+### Key Snippet: Securing SSH with Sed
+Manually editing `/etc/ssh/sshd_config` is slow and error-prone. The hardener uses `sed` to search for and replace insecure settings with one command.
+
+```bash
+cmd_secure_ssh() {
+    log "Hardening SSH configuration..."
+    local config="/etc/ssh/sshd_config"
+    
+    # -i: edit the file in-place
+    # s/^#*Old/New/: find the line (even if commented) and replace it
+    sudo sed -i 's/^#*PermitRootLogin.*/PermitRootLogin no/' "$config"
+    sudo sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' "$config"
+    
+    # Restart the service to apply changes
+    sudo systemctl restart sshd
+}
+```
+
+### Key Snippet: Auditing Open Ports
+The hardener provides a clean list of exactly what is "listening" on your network, making it easy to spot unauthorized services.
+
+```bash
+cmd_audit() {
+    echo "=== Network Audit ==="
+    # ss -tlnp: show TCP, Listening, Numeric ports, and Process info
+    ss -tlnp 2>/dev/null | grep LISTEN || \
+        echo "Error: Could not perform network audit."
+}
+```
+
+**Pro Tip:** Running a hardening script like this on every new server ensures a "security baseline" that keeps your infrastructure protected from the moment it's created!
+
+---
+
 ## ✅ Stack 39 Complete!
 
-You learned:
-- ✅ Kernel hardening with sysctl
-- ✅ User access policies
-- ✅ File system hardening
-- ✅ Network hardening
-- ✅ Service hardening
-- ✅ Monitoring and logging
+Congratulations! You've successfully built a "fortress" for your Linux system! You can now:
+- ✅ **Perform professional security audits** on any Linux server
+- ✅ **Harden your SSH configuration** to prevent brute-force attacks
+- ✅ **Secure critical system files** (Passwd, Shadow, Group)
+- ✅ **Enforce strict firewall policies** using UFW or Firewalld
+- ✅ **Identify and manage SUID files** to prevent privilege escalation
+- ✅ **Monitor failed logins** and audit active user accounts
 
-### Next: Stack 40 - GitLab CI/CD →
+### What's Next?
+In the next stack, we'll dive into **GitLab CI/CD**. You'll learn how to build professional pipelines within the GitLab ecosystem to automate your entire testing and deployment workflow!
+
+**Next: Stack 40 - GitLab CI/CD →**
 
 ---
 

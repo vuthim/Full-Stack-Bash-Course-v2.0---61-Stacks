@@ -620,21 +620,67 @@ sudo -l
 
 ---
 
+## 🎓 Final Project: The Bash Security Auditor
+
+Now that you've mastered secure scripting, let's see how a professional security engineer might build an automated auditing tool. We'll examine the "Security Tools" — a script that performs system audits, checks password strengths, and sanitizes user input automatically.
+
+### What the Bash Security Auditor Does:
+1. **Audits File Permissions** and warns about unsafe configurations (like 777).
+2. **Finds Unsafe Ownership** and files with the SUID bit set.
+3. **Checks Password Aging** and strength for system users.
+4. **Scans for Open Ports** to identify potential network entry points.
+5. **Audits SSH Configuration** for best practices (like disabling root login).
+6. **Provides Input Sanitization** to prevent command injection attacks.
+
+### Key Snippet: Input Sanitization
+The single most important security feature for any script that takes user input is sanitization. This function strips out everything except "safe" characters.
+
+```bash
+cmd_sanitize() {
+    local input=$1
+    
+    # Strip everything except letters, numbers, underscores, and dashes
+    # input//pattern/replacement is a powerful Bash string replacement
+    local safe_input="${input//[^a-zA-Z0-9_-]/}"
+    
+    echo "Sanitized: $safe_input"
+}
+```
+
+### Key Snippet: Auditing SSH Security
+A professional auditor checks the `/etc/ssh/sshd_config` file for critical security settings and warns if they are missing or weak.
+
+```bash
+cmd_ssh_audit() {
+    local host=$1
+    echo "=== SSH Audit for $host ==="
+    
+    # Check for common security flags in the config file
+    ssh "$host" "grep -E '^(PermitRootLogin|PasswordAuthentication)' /etc/ssh/sshd_config"
+    
+    # Pro Tip: A secure server should have PermitRootLogin NO 
+    # and PasswordAuthentication NO (use keys instead!)
+}
+```
+
+**Pro Tip:** Automating your security checks means you catch vulnerabilities the moment they appear, not weeks later during a manual audit!
+
+---
+
 ## ✅ Stack 23 Complete!
 
-You learned:
-- ✅ Input sanitization and validation
-- ✅ Secure script templates
-- ✅ Secret management (hashes, env, vault)
-- ✅ Common security mistakes to avoid
-- ✅ File permission best practices
-- ✅ Safe file operations
-- ✅ Path traversal prevention
-- ✅ Network security (curl, SSH)
-- ✅ Comprehensive security audit scripts
-- ✅ Security checklist
+Congratulations! You've successfully built a "fortress" around your code! You can now:
+- ✅ **Sanitize and validate** all user input to prevent attacks
+- ✅ **Securely manage secrets** like passwords and API keys
+- ✅ **Audit file permissions** and ownership across your system
+- ✅ **Harden your SSH** and network configurations
+- ✅ **Identify SUID files** and other privilege escalation risks
+- ✅ **Follow the Principle of Least Privilege** in all your scripts
 
-### Next: Stack 24 - Advanced Scheduling →
+### What's Next?
+In the next stack, we'll dive into **Advanced Scheduling**. You'll learn how to take your automation to the next level with complex timing, task dependencies, and error recovery!
+
+**Next: Stack 24 - Advanced Scheduling →**
 
 ---
 

@@ -250,15 +250,82 @@ fusermount -u ~/ssh_home
 
 ---
 
+## 🎓 Final Project: Network File System (NFS & Samba) Manager
+
+Now that you've mastered the protocols for sharing files, let's see how a professional system administrator might automate network storage. We'll examine the "NFS & Samba Manager" — a tool that simplifies exporting directories, managing network users, and mounting remote shares.
+
+### What the NFS & Samba Manager Does:
+1. **Manages Server Lifecycles** (start, stop, status) for both NFS and Samba services.
+2. **Automates NFS Exports** by adding directories to `/etc/exports` and refreshing the server.
+3. **Simplifies NFS Mounting** for clients, including automatic directory creation.
+4. **Manages Samba Users** (adding and enabling) with simple commands.
+5. **Generates Samba Share Definitions** automatically in the `smb.conf` file.
+6. **Audits Active Shares** to show you exactly what is being shared on the network.
+
+### Key Snippet: Automated NFS Exporting
+Sharing a directory via NFS usually requires multiple steps. The manager combines them into one seamless action.
+
+```bash
+cmd_nfs_export() {
+    local dir=$1
+    
+    # 1. Create the directory if it doesn't exist
+    if [ ! -d "$dir" ]; then
+        sudo mkdir -p "$dir"
+    fi
+    
+    # 2. Add the export rule to the system configuration
+    # * means allow any IP; (rw,sync) means read/write and safe writing
+    echo "$dir *(rw,sync,no_subtree_check)" | sudo tee -a /etc/exports
+    
+    # 3. Tell the NFS server to reload the configuration
+    sudo exportfs -a
+    log "Directory '$dir' is now shared via NFS!"
+}
+```
+
+### Key Snippet: Adding Samba Shares Programmatically
+Editing the complex Samba configuration file can be risky. The manager uses a "Here Document" to append new shares safely.
+
+```bash
+cmd_smb_share_add() {
+    local name=$1
+    local path=$2
+    
+    # Append the new share block to the end of the config file
+    cat >> /etc/samba/smb.conf << EOF
+
+[$name]
+   path = $path
+   browsable = yes
+   writable = yes
+   guest ok = no
+EOF
+    
+    # Restart Samba to apply the new share
+    sudo systemctl restart smbd
+    log "Samba share '$name' added successfully!"
+}
+```
+
+**Pro Tip:** Automation like this ensures that your network shares are configured consistently and securely across all your servers!
+
+---
+
 ## ✅ Stack 34 Complete!
 
-You learned:
-- ✅ NFS server and client setup
-- ✅ Samba configuration
-- ✅ SSHFS mounting
-- ✅ When to use each
+Congratulations! You've successfully connected your servers through the network! You can now:
+- ✅ **Setup an NFS Server** for high-performance Linux-to-Linux sharing
+- ✅ **Configure Samba** for seamless file sharing with Windows and Mac
+- ✅ **Manage network users** and permissions for secure access
+- ✅ **Use SSHFS** for quick, encrypted "on-the-fly" mounting
+- ✅ **Automate the mounting process** on client machines
+- ✅ **Choose the right protocol** (NFS, Samba, or SSHFS) for any situation
 
-### Next: Stack 35 - Firewall & Security →
+### What's Next?
+In the next stack, we'll dive into **Firewalls & Network Security**. You'll learn how to protect your newly shared files from unauthorized access and "hacker" attacks!
+
+**Next: Stack 35 - Firewall & Security →**
 
 ---
 

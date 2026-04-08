@@ -487,28 +487,53 @@ crontab -e
 
 ---
 
-## ✅ Stack 13 Complete!
+## 🎓 Final Project: Building a Task Scheduler
 
-You learned:
-- ✅ What is Cron and how it works
-- ✅ Cron syntax and special characters
-- ✅ Managing cron jobs (crontab)
-- ✅ Using `at` for one-time scheduling
-- ✅ Systemd timers (modern alternative)
-- ✅ Creating practical scheduled tasks
+Now that you've mastered Cron and `at`, let's look at how a professional scripter might build a tool to manage these tasks. We'll examine the "Task Scheduler" — a script that makes adding, removing, and managing cron jobs much easier.
 
-### Next: More stacks coming soon! →
-### Or revisit previous stacks for practice!
+### What the Task Scheduler Does:
+1. **List** all active cron jobs.
+2. **Add** new jobs with a simple command (no need to open `crontab -e`).
+3. **Remove** existing jobs by name.
+4. **Enable/Disable** jobs without deleting them.
+5. **Backup/Restore** your entire crontab.
+
+### Key Snippet: Adding a Job Programmatically
+One of the coolest tricks in the scheduler is adding a cron job without using the interactive editor:
+
+```bash
+# How to add a job from a script:
+(crontab -l 2>/dev/null; echo "$schedule $script_path") | crontab -
+```
+*   `crontab -l` gets your current jobs.
+*   `echo` adds the new line.
+*   `| crontab -` sends the whole thing back to be saved.
+
+### Key Snippet: Enabling/Disabling Jobs
+The scheduler can "disable" a job by commenting it out (`#`) and "enable" it by removing the `#`.
+
+```bash
+# Disable a job using sed
+crontab -l | sed "s|$script_path|#$script_path|" | crontab -
+```
+
+**Pro Tip:** Building your own "wrapper" scripts like this is how you turn basic Bash skills into powerful automation tools!
 
 ---
 
-## 📝 Challenge: Build Your Own Scheduler
+## ✅ Stack 13 Complete!
 
-Create a comprehensive backup scheduler that:
-1. Runs full backup weekly
-2. Runs incremental backup daily
-3. Cleans up old backups monthly
-4. Sends email notifications on failure
+You've successfully mastered the art of time-traveling for your scripts! You can now:
+- ✅ **Automate anything** using the power of Cron
+- ✅ **Schedule one-off tasks** with the `at` command
+- ✅ **Understand Cron syntax** like a pro (* * * * *)
+- ✅ **Use modern alternatives** like Systemd timers
+- ✅ **Manage system-wide tasks** safely
+
+### What's Next?
+In the next stack, we'll dive into **Git for Scripters**. You'll learn how to use version control to keep your scripts safe, track changes, and never lose a working version of your code again!
+
+**Next: Stack 14 - Git for Scripters →**
 
 ---
 

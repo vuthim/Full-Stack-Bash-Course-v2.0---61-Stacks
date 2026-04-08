@@ -674,22 +674,67 @@ ClientAliveCountMax 3
 
 ---
 
+## 🎓 Final Project: SSH Manager
+
+Now that you've mastered SSH basics, let's see how a professional system administrator might automate remote management. We'll examine the "SSH Manager" — a tool that simplifies connecting to servers, managing keys, and setting up secure tunnels.
+
+### What the SSH Manager Does:
+1. **Simplifies Connections** by using aliases and saved configurations.
+2. **Executes Remote Commands** across one or multiple servers.
+3. **Automates Key Management** (generating keys and copying them to servers).
+4. **Manages SSH Config** programmatically (no manual editing needed).
+5. **Sets up SSH Tunnels** for secure port forwarding with simple commands.
+6. **Handles File Transfers** using simplified SCP and SFTP wrappers.
+
+### Key Snippet: Programmatic Key Generation
+A good manager script can handle the nuances of key generation, like setting the correct permissions automatically.
+
+```bash
+cmd_keygen() {
+    local key_path="$HOME/.ssh/id_ed25519"
+    
+    # Generate modern Ed25519 key
+    ssh-keygen -t ed25519 -C "$USER@$(hostname)" -f "$key_path"
+    
+    # Set strict permissions (SSH requires this!)
+    chmod 700 "$HOME/.ssh"
+    chmod 600 "$key_path"
+    chmod 644 "${key_path}.pub"
+}
+```
+
+### Key Snippet: SSH Tunneling Made Simple
+Instead of remembering complex `ssh -L` flags, the manager provides a clear command:
+
+```bash
+cmd_tunnel_local() {
+    local host=$1
+    local port=$2
+    
+    log "Forwarding local port $port to $host..."
+    # -L: Local port forwarding
+    ssh -L "$port:localhost:$port" "$host"
+}
+```
+
+**Pro Tip:** By wrapping these commands in a script, you reduce the risk of typos that could lead to connection failures or security vulnerabilities.
+
+---
+
 ## ✅ Stack 16 Complete!
 
-You learned:
-- ✅ SSH fundamentals and installation
-- ✅ SSH key generation and management
-- ✅ Remote command execution
-- ✅ SSH config for easy access
-- ✅ Automation scripts (deploy, parallel, health check)
-- ✅ Jump server configuration
-- ✅ SSH security hardening
-- ✅ Two-factor authentication
-- ✅ Secure file transfer (SCP, SFTP, rsync)
-- ✅ SSH tunnels (local, remote, dynamic)
-- ✅ Troubleshooting common issues
+Congratulations! You've unlocked the ability to control computers across the globe! You can now:
+- ✅ **Securely connect** to remote servers using SSH
+- ✅ **Master SSH Keys** for passwordless, secure logins
+- ✅ **Execute commands** on remote machines from your local terminal
+- ✅ **Automate file transfers** using SCP and SFTP
+- ✅ **Create SSH Configs** for easy, one-word connections
+- ✅ **Build secure tunnels** to bypass firewalls and access private services
 
-### Next: Stack 17 - Network Scripting →
+### What's Next?
+In the next stack, we'll dive into **Network Scripting**. You'll learn how to diagnose network issues, scan ports, and automate network-related tasks like a pro!
+
+**Next: Stack 17 - Network Scripting →**
 
 ---
 

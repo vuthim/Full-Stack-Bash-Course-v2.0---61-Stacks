@@ -348,18 +348,68 @@ echo "Errors: $(grep -c ERROR /tmp/test.log)"
 
 ---
 
+## 🎓 Final Project: Structured Log Manager
+
+Now that you've mastered logging best practices, let's see how a professional scripter might build a tool to handle logs for their applications. We'll examine the "Log Manager" — a utility that provides a standard way to write, view, and analyze logs with proper timestamps and severity levels.
+
+### What the Structured Log Manager Does:
+1. **Writes Standardized Logs** with consistent timestamps and levels (INFO, WARN, ERROR).
+2. **Handles Log Rotation** by archiving and compressing old logs to save space.
+3. **Provides Real-Time Tailing** to watch your application's behavior as it happens.
+4. **Performs Log Analysis** by counting the number of errors and warnings.
+5. **Filters Error Entries** to help you focus on critical issues quickly.
+6. **Generates Statistical Summaries** of your application's health.
+
+### Key Snippet: Writing with Timestamps
+The core of any good logger is a consistent timestamp. Our manager uses a helper function to ensure every log line looks the same.
+
+```bash
+log_with_timestamp() {
+    local level=$1
+    shift # Remove the level from the arguments
+    local message="$*"
+    
+    # Format: [2023-10-27 10:30:05] [INFO] My message
+    local timestamp=$(date +'%Y-%m-%d %H:%M:%S')
+    echo "[$timestamp] [$level] $message" >> "/var/log/app.log"
+}
+```
+
+### Key Snippet: Automated Log Rotation
+To prevent your hard drive from filling up, the manager includes a "rotate" command that renames the current log and starts a fresh one.
+
+```bash
+cmd_rotate() {
+    local archived="app.log.$(date +%Y%m%d)"
+    
+    # Move the current log to a dated filename
+    mv "app.log" "$archived"
+    touch "app.log" # Start a new empty log
+    
+    # Compress the old log to save 90% space!
+    gzip "$archived"
+    log "Log rotated and compressed: ${archived}.gz"
+}
+```
+
+**Pro Tip:** High-quality logs are like a "black box" for your scripts. When something goes wrong in the middle of the night, your logs will tell you exactly what happened!
+
+---
+
 ## ✅ Stack 30 Complete!
 
-You learned:
-- ✅ Log levels and when to use
-- ✅ Log file locations and management
-- ✅ Structured logging (JSON, syslog)
-- ✅ Bash script logging
-- ✅ Log rotation
-- ✅ Centralized logging
-- ✅ Log analysis
+Congratulations! You've successfully given your scripts a voice! You can now:
+- ✅ **Implement proper log levels** (DEBUG, INFO, WARN, ERROR)
+- ✅ **Write structured logs** with consistent timestamps
+- ✅ **Manage log files** and prevent them from consuming too much disk space
+- ✅ **Perform basic log analysis** to identify system trends
+- ✅ **Automate log rotation** using Bash and Gzip
+- ✅ **Troubleshoot complex issues** by auditing application history
 
-### Next: Stack 31 - Kubernetes Basics →
+### What's Next?
+In the next stack, we'll dive into **Kubernetes Basics**. You'll learn how to manage large-scale clusters of containers and orchestrate complex applications like a cloud professional!
+
+**Next: Stack 31 - Kubernetes Basics →**
 
 ---
 

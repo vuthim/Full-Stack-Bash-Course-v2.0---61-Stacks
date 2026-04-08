@@ -1,14 +1,21 @@
 # ☸️ STACK 59: MULTI-CLUSTER ORCHESTRATION [ELECTIVE]
 ## Managing Distributed Systems at Scale
 
+**What is Multi-Cluster?** Think of a single Kubernetes cluster like one data center. Multi-cluster means managing MULTIPLE data centers across regions, clouds, or environments. It's like being a conductor of an orchestra where each section is in a different building!
+
+**Why This Matters?** Large organizations run workloads across multiple clusters for redundancy, compliance, and scale. If you're going to manage infrastructure at enterprise level, multi-cluster is essential knowledge.
+
 ---
 
 ## 🔰 What You'll Learn
-- Multi-cluster Kubernetes management
-- Configuration management across environments
-- Deployment orchestration
-- Service mesh basics
-- Infrastructure automation
+
+| Topic | What It Covers | Why It Matters |
+|-------|---------------|----------------|
+| **Multi-cluster Kubernetes** | Manage multiple K8s clusters together | High availability, geographic distribution |
+| **Configuration management** | Keep environments consistent | No more "works in dev, breaks in prod" |
+| **Deployment orchestration** | Roll out changes across clusters safely | Zero-downtime updates at scale |
+| **Service mesh basics** | Connect services across clusters | Services communicate securely and reliably |
+| **Infrastructure automation** | Script the management of everything | One script, many clusters |
 
 ---
 

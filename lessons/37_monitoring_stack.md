@@ -291,17 +291,61 @@ sudo systemctl restart prometheus
 
 ---
 
+## 🎓 Final Project: Monitoring Stack Manager
+
+Now that you've mastered the concepts of Prometheus and Grafana, let's see how a professional Site Reliability Engineer (SRE) might automate the management of their monitoring infrastructure. We'll examine the "Monitoring Stack Manager" — a tool that simplifies starting, stopping, and auditing your observability services.
+
+### What the Monitoring Stack Manager Does:
+1. **Automates Lifecycle Management** (start, stop, restart) for both Prometheus and Grafana.
+2. **Audits Cluster Targets** to show you exactly which servers are being monitored.
+3. **Checks Active Alerts** to identify system problems before users report them.
+4. **Lists Grafana Dashboards** programmatically using the Grafana API.
+5. **Streams Service Logs** directly to your terminal for quick troubleshooting.
+6. **Handles Docker and Systemd** configurations interchangeably.
+
+### Key Snippet: Auditing Prometheus Targets
+Knowing which servers Prometheus is successfully "scraping" for data is critical. The manager uses the Prometheus API to give you a quick JSON summary.
+
+```bash
+cmd_prom_targets() {
+    echo "=== Prometheus Monitoring Targets ==="
+    # Call the local Prometheus API
+    # jq . : Pretty-print the JSON output
+    curl -s http://localhost:9090/api/v1/targets | jq . 2>/dev/null || \
+        echo "Error: Could not reach Prometheus API."
+}
+```
+
+### Key Snippet: Managing Service Logs
+Instead of searching through `/var/log`, the manager provides a direct "one-stop-shop" for service history.
+
+```bash
+cmd_prom_logs() {
+    # -u: Specific unit name
+    # -n 50: Only the most recent 50 lines
+    # --no-pager: Don't open in 'less', just print to screen
+    sudo journalctl -u prometheus -n 50 --no-pager
+}
+```
+
+**Pro Tip:** Automation like this ensures that your "eyes" (your monitoring stack) are always open and working correctly!
+
+---
+
 ## ✅ Stack 37 Complete!
 
-You learned:
-- ✅ Prometheus basics and installation
-- ✅ Node Exporter setup
-- ✅ Grafana installation
-- ✅ Creating dashboards
-- ✅ Basic PromQL queries
-- ✅ Alerting
+Congratulations! You've successfully built a professional "System Watchtower"! You can now:
+- ✅ **Setup Prometheus** to collect real-time metrics from your servers
+- ✅ **Install Node Exporter** to track CPU, RAM, and Disk health
+- ✅ **Build beautiful Grafana dashboards** to visualize system trends
+- ✅ **Write PromQL queries** to extract specific data from your metrics
+- ✅ **Automate your monitoring stack** using Bash and the service APIs
+- ✅ **Troubleshoot performance issues** before they become outages
 
-### Next: Stack 38 - Ansible Essentials →
+### What's Next?
+In the next stack, we'll dive into **Ansible Essentials**. You'll learn how to manage thousands of servers at once by writing simple, human-readable configuration files!
+
+**Next: Stack 38 - Ansible Essentials →**
 
 ---
 

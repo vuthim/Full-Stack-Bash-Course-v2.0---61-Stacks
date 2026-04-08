@@ -706,21 +706,59 @@ USER node
 
 ---
 
+## 🎓 Final Project: Docker Manager
+
+Now that you've mastered Docker basics, let's see how a professional DevOps engineer might automate container management. We'll examine the "Docker Manager" — a tool that simplifies common Docker tasks like viewing stats, managing images, and cleaning up resources.
+
+### What the Docker Manager Does:
+1. **Lists Containers and Images** with clean, formatted tables.
+2. **Manages Lifecycle** (start, stop, restart, remove) with simple commands.
+3. **Executes Commands** inside containers without long Docker strings.
+4. **Displays Real-Time Stats** for CPU and memory usage.
+5. **Manages Networks and Volumes** for persistent data and connectivity.
+6. **Automates Cleanup** by pruning unused images and containers.
+
+### Key Snippet: Formatted Output
+One of the best ways to enhance Docker with Bash is by using the `--format` flag to create custom, readable tables.
+
+```bash
+cmd_ps() {
+    echo "=== Running Containers ==="
+    # Use go-template format for beautiful tables
+    docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
+}
+```
+
+### Key Snippet: Automated Cleanup
+Maintaining a clean Docker environment is crucial. The manager uses "pruning" to safely remove "dangling" (unused) resources.
+
+```bash
+cmd_prune() {
+    log "Cleaning up all unused resources..."
+    # -a: remove all unused images (not just dangling)
+    # -f: force (don't ask for confirmation)
+    docker system prune -af
+}
+```
+
+**Pro Tip:** Automation tools like this are the secret to managing large-scale container environments without losing your mind!
+
+---
+
 ## ✅ Stack 15 Complete!
 
-You learned:
-- ✅ Docker installation and basics
-- ✅ Essential Docker commands
-- ✅ Dockerfile deep dive
-- ✅ Multi-stage builds
-- ✅ Bash scripts for Docker (build, run, manage)
-- ✅ Docker Compose basics
-- ✅ Docker networking
-- ✅ Docker volumes and backups
-- ✅ Troubleshooting
-- ✅ Security best practices
+Congratulations! You've successfully "containerized" your Bash skills! You can now:
+- ✅ **Understand Docker concepts** like Images and Containers
+- ✅ **Automate container lifecycles** (Start, Stop, Remove)
+- ✅ **Manage resources** like Networks and Volumes
+- ✅ **Execute commands** inside running containers
+- ✅ **Build custom images** using Dockerfiles
+- ✅ **Monitor performance** using Docker stats
 
-### Next: Stack 16 - SSH Remote →
+### What's Next?
+In the next stack, we'll dive into **SSH & Remote Management**. You'll learn how to securely connect to remote servers and execute your scripts across entire fleets of machines!
+
+**Next: Stack 16 - SSH & Remote Management →**
 
 ---
 

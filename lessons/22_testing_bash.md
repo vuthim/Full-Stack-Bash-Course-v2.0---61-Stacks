@@ -749,18 +749,74 @@ Write tests that verify:
 
 ---
 
+## 🎓 Final Project: Custom Bash Test Framework
+
+Now that you've mastered testing concepts and tools like Bats, let's see how a professional scripter might build a lightweight, custom test framework from scratch. We'll examine the "Bash Test Framework" — a utility that provides a set of assertion functions and a summary report for your tests.
+
+### What the Bash Test Framework Does:
+1. **Tracks Results** automatically (passed, failed, and total tests run).
+2. **Provides Rich Assertions** (equals, contains, file exists, command exists).
+3. **Validates Command Success/Failure** (check if a command exits with the expected code).
+4. **Shows Color-Coded Output** (Green for pass, Red for fail).
+5. **Generates a Summary Report** at the end of the test run.
+6. **Integrates Easily** into existing scripts via sourcing.
+
+### Key Snippet: The Assertion Pattern
+Every assertion function follows the same pattern: compare, log result, and increment the counter.
+
+```bash
+assert_equals() {
+    local expected=$1
+    local actual=$2
+    local msg=${3:-"Assertion failed"}
+    
+    if [ "$expected" = "$actual" ]; then
+        echo -e "\033[0;32m✓ PASS\033[0m: $msg"
+        ((TESTS_PASSED++))
+    else
+        echo -e "\033[0;31m✗ FAIL\033[0m: $msg (expected: '$expected', got: '$actual')"
+        ((TESTS_FAILED++))
+    fi
+    ((TESTS_RUN++))
+}
+```
+
+### Key Snippet: Testing for Success and Failure
+Professional testing often requires verifying that a command *fails* when it's supposed to.
+
+```bash
+assert_failure() {
+    local cmd=$*
+    # eval: execute the command string
+    if ! eval "$cmd" &>/dev/null; then
+        echo -e "\033[0;32m✓ PASS\033[0m: Command failed as expected: $cmd"
+        ((TESTS_PASSED++))
+    else
+        echo -e "\033[0;31m✗ FAIL\033[0m: Command should have failed: $cmd"
+        ((TESTS_FAILED++))
+    fi
+    ((TESTS_RUN++))
+}
+```
+
+**Pro Tip:** Your code is only as good as your tests. A simple test framework that you actually use is 100x better than a complex one that you avoid!
+
+---
+
 ## ✅ Stack 22 Complete!
 
-You learned:
-- ✅ Simple test framework basics
-- ✅ bats-core installation and usage
-- ✅ bats assertions and helpers
-- ✅ Setup/teardown functions
-- ✅ CI/CD integration (GitHub, GitLab)
-- ✅ Testing strategies (TDD)
-- ✅ Common mistakes to avoid
+Congratulations! You've successfully built a safety net for your code! You can now:
+- ✅ **Understand the Testing Pyramid** and when to use different types of tests
+- ✅ **Write unit tests** for individual functions to catch bugs early
+- ✅ **Use Bats-core** for professional-grade Bash testing
+- ✅ **Build custom assertions** to verify files, strings, and command outputs
+- ✅ **Integrate tests into CI/CD** to automate your quality checks
+- ✅ **Practice TDD** (Test-Driven Development) for more reliable scripts
 
-### Next: Stack 23 - Security Scripting →
+### What's Next?
+In the next stack, we'll dive into **Security Scripting**. You'll learn how to write secure Bash code, handle secrets safely, and protect your systems from common vulnerabilities!
+
+**Next: Stack 23 - Security Scripting →**
 
 ---
 

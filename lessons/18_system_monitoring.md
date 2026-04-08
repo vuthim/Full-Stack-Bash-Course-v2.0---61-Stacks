@@ -336,4 +336,78 @@ Create a comprehensive monitor that:
 
 ---
 
+## 🎓 Final Project: System Monitoring Dashboard
+
+Now that you've mastered monitoring commands, let's see how a professional system administrator might build a real-time dashboard. We'll examine the "System Monitor" — a tool that provides a centralized view of your computer's health, from CPU loads to failing services.
+
+### What the System Monitoring Dashboard Does:
+1. **Provides a Full System Overview** including uptime, load averages, and kernel info.
+2. **Details Resource Usage** for CPU, Memory, and Disk in human-readable formats.
+3. **Identifies Top Processes** by both CPU and Memory consumption.
+4. **Monitors Network Health** showing active interfaces and connection stats.
+5. **Tracks Service Status** listing all running and failed system services.
+6. **Includes an Alert System** that warns you when CPU usage crosses a threshold.
+
+### Key Snippet: Real-Time Monitoring Loop
+The "watch" feature of the dashboard uses a simple `while` loop combined with the `clear` command to create a real-time updating interface.
+
+```bash
+cmd_watch() {
+    local interval=${1:-2}
+    echo "Monitoring (Ctrl+C to stop)..."
+    
+    while true; do
+        clear # Wipe the screen
+        echo "Updated: $(date)"
+        
+        # Call the overview function we defined earlier
+        cmd_overview 
+        
+        sleep "$interval" # Wait before the next update
+    done
+}
+```
+
+### Key Snippet: Smart CPU Alerting
+This snippet shows how to parse `top` output and trigger a visual alert if the CPU usage is too high.
+
+```bash
+cmd_alert() {
+    local threshold=$1
+    log "Monitoring CPU. Alert threshold: $threshold%"
+    
+    while true; do
+        # Extract CPU usage percentage
+        cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'.' -f1)
+        
+        if [ "$cpu" -gt "$threshold" ]; then
+            # Print in RED if threshold exceeded
+            echo -e "\033[0;31mALERT: CPU at ${cpu}%\033[0m"
+        fi
+        sleep 5
+    done
+}
+```
+
+**Pro Tip:** A dashboard like this is the first thing a DevOps engineer looks at when a server is reported as "slow."
+
+---
+
 ## ✅ Stack 18 Complete!
+
+Congratulations! You've successfully built your own system command center! You can now:
+- ✅ **Monitor system health** in real-time using Uptime and Top
+- ✅ **Analyze resource usage** for CPU, RAM, and Disk Space
+- ✅ **Identify performance bottlenecks** by finding top processes
+- ✅ **Track network activity** and connection statistics
+- ✅ **Audit system services** to find failing units
+- ✅ **Build automated alerts** to catch problems before they crash the system
+
+### What's Next?
+In the next stack, we'll dive into **AWS CLI**. You'll learn how to take your Bash skills to the cloud and manage entire global infrastructures from your local terminal!
+
+**Next: Stack 19 - AWS CLI →**
+
+---
+
+*End of Stack 18*

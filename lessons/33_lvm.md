@@ -301,17 +301,71 @@ ls /mnt/test/
 
 ---
 
+## 🎓 Final Project: Logical Volume Manager (LVM)
+
+Now that you've mastered the layers of LVM, let's see how a professional storage engineer might automate disk management. We'll examine the "LVM Manager" — a tool that simplifies creating, extending, and snapshotting your disk space.
+
+### What the LVM Manager Does:
+1. **Provides a Unified Status** showing Physical Volumes (PV), Volume Groups (VG), and Logical Volumes (LV).
+2. **Simplifies Volume Creation** by wrapping complex `pvcreate`, `vgcreate`, and `lvcreate` commands.
+3. **Automates Volume Extension** and automatically resizes the underlying filesystem (no extra steps!).
+4. **Handles Safety Checks** like unmounting and running `e2fsck` before reducing a volume.
+5. **Manages Snapshots** for instant backups and easy restores.
+6. **Cleans Up Resources** by safely removing volumes and volume groups when they are no longer needed.
+
+### Key Snippet: Automated Volume Extension
+The most common LVM task is growing a disk when it gets full. The manager automates both the LVM part AND the filesystem part.
+
+```bash
+cmd_extend() {
+    local vg=$1
+    local lv=$2
+    local size=$3
+    
+    # 1. Extend the Logical Volume in LVM
+    sudo lvextend -L +"$size" "/dev/$vg/$lv"
+    
+    # 2. Grow the actual filesystem so the OS can use the new space
+    # resize2fs works for ext4; for xfs, you'd use xfs_growfs
+    sudo resize2fs "/dev/$vg/$lv"
+    
+    log "Logical Volume $vg/$lv extended by $size successfully!"
+}
+```
+
+### Key Snippet: Instant Snapshots
+Snapshots are like "save points" for your disk. The manager makes creating them a one-word command.
+
+```bash
+cmd_snap_create() {
+    local lv=$1
+    local name=$2
+    
+    # Create a snapshot (-s) of the logical volume
+    # It only stores the CHANGES, so it can be small (1G)
+    sudo lvcreate -s -n "$name" -L 1G "/dev/$lv"
+    log "Snapshot '$name' created for volume $lv."
+}
+```
+
+**Pro Tip:** Automation like this is why Linux servers can stay up for years without reboots, even while their disks are being upgraded and swapped!
+
+---
+
 ## ✅ Stack 33 Complete!
 
-You learned:
-- ✅ LVM concepts (PV, VG, LV)
-- ✅ Setting up LVM
-- ✅ Creating volumes
-- ✅ Resizing volumes
-- ✅ LVM snapshots
-- ✅ Removing LVM
+Congratulations! You've successfully mastered the "Liquid Metal" of Linux storage! You can now:
+- ✅ **Understand the LVM hierarchy** (Physical Volumes → Volume Groups → Logical Volumes)
+- ✅ **Resize disks on-the-fly** without rebooting your system
+- ✅ **Create and manage snapshots** for instant "point-in-time" backups
+- ✅ **Manage disk space flexibly** across multiple physical drives
+- ✅ **Automate filesystem resizing** to match your storage changes
+- ✅ **Perform safe disk reductions** using proper unmounting and checking procedures
 
-### Next: Stack 34 - NFS, Samba, SSHFS →
+### What's Next?
+In the next stack, we'll dive into **NFS, Samba, and SSHFS**. You'll learn how to share your files across the network so multiple computers can access them at once!
+
+**Next: Stack 34 - NFS, Samba, SSHFS →**
 
 ---
 

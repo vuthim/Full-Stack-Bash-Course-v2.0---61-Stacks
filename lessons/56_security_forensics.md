@@ -1,14 +1,29 @@
 # 🔒 STACK 56: SECURITY AUDITING & FORENSICS
 ## Security Automation Scripts
 
+**What is Security Auditing?** Think of it like a home security inspection. You check every door, window, and alarm to find weaknesses BEFORE a burglar does. Forensics is what happens AFTER a break-in - figuring out what happened, when, and who did it.
+
+**⚠️ WARNING:** Security auditing finds vulnerabilities that attackers could exploit. Handle findings responsibly. Never scan systems you don't own or have explicit permission to test!
+
 ---
 
 ## 🔰 What You'll Learn
-- System security auditing
-- Log analysis for threats
-- File integrity checking
-- Network forensics
-- Incident response automation
+
+| Skill | What It Does | Real-World Application |
+|-------|--------------|-----------------------|
+| **System security auditing** | Automated security checks | Find weaknesses before attackers do |
+| **Log analysis for threats** | Spot attack patterns in logs | Detect brute-force attempts, intrusions |
+| **File integrity checking** | Verify files haven't been tampered with | Detect malware, unauthorized changes |
+| **Network forensics** | Analyze network traffic for threats | Identify data exfiltration, C2 connections |
+| **Incident response automation** | Auto-respond to security events | Block attacking IPs, isolate compromised hosts |
+
+### The Security Auditing Mindset
+```
+Normal admin: "Is the system running?"
+Security auditor: "Can someone break in? How? What would they find?"
+
+Think like an attacker to defend like a professional.
+```
 
 ---
 
@@ -424,18 +439,72 @@ Create a script to detect brute force attacks
 
 ---
 
+## 🎓 Final Project: The Bash Forensics Investigator
+
+Now that you've mastered security auditing, let's see how a professional Security Analyst might build a forensics tool. We'll examine the "Forensics Investigator" — a script that performs deep system audits, monitors file integrity, and creates event timelines to investigate suspicious activity.
+
+### What the Bash Forensics Investigator Does:
+1. **Performs Real-Time Anomaly Detection** by scanning for suspicious processes (like `netcat` or `nmap`).
+2. **Audits Failed Logins** using the `lastb` command to identify brute-force attacks.
+3. **Monitors File Integrity** by generating and comparing SHA-256 hashes of critical system binaries.
+4. **Tracks File Modifications** to find any system files changed in the last 24 hours.
+5. **Generates Event Timelines** by correlating logins, command history, and system logs.
+6. **Audits Network Surfaces** by listing all listening ports and their associated processes.
+
+### Key Snippet: File Integrity Monitoring (FIM)
+The most critical part of forensics is knowing if a system file (like `/bin/ls`) has been replaced by a hacker. The investigator uses hashing to detect even a single character change.
+
+```bash
+cmd_compare_hashes() {
+    echo "=== Comparing Hashes with Security Baseline ==="
+    
+    # Read the 'known good' hashes from a baseline file
+    while read -r line; do
+        local file=$(echo "$line" | awk '{print $2}')
+        local expected_hash=$(echo "$line" | awk '{print $1}')
+        
+        # Calculate the CURRENT hash of the file
+        local current_hash=$(sha256sum "$file" | awk '{print $1}')
+        
+        if [ "$expected_hash" != "$current_hash" ]; then
+            warn "ALERT: File $file has been MODIFIED or REPLACED!"
+        fi
+    done < ~/.file_hashes_baseline
+}
+```
+
+### Key Snippet: Suspicious Process Auditing
+Hackers often leave "backdoors" running. The investigator scans the process list for common tools used in cyber attacks.
+
+```bash
+cmd_audit() {
+    echo "=== Scanning for Suspicious Activity ==="
+    
+    # -E: Use extended regex to search for multiple hacker tools
+    # grep -v grep: Don't show this search process itself!
+    ps aux | grep -E "nc|netcat|nmap|socat" | grep -v grep || \
+        echo "No suspicious processes detected."
+}
+```
+
+**Pro Tip:** Forensics is about "the breadcrumbs." Automating the collection of these crumbs ensures you have the evidence you need when a real security incident occurs!
+
+---
+
 ## ✅ Stack 56 Complete!
 
-You learned:
-- ✅ System security auditing
-- ✅ User account auditing
-- ✅ File integrity monitoring
-- ✅ Log analysis for threats
-- ✅ Anomaly detection
-- ✅ Incident response automation
-- ✅ Permission analysis
+Congratulations! You've successfully become a "Digital Detective"! You can now:
+- ✅ **Perform deep system audits** to identify security weaknesses
+- ✅ **Investigate system breaches** using professional forensics techniques
+- ✅ **Monitor file integrity** to detect unauthorized modifications
+- ✅ **Audit user activity** and correlate logs into an event timeline
+- ✅ **Identify suspicious processes** and network connections
+- ✅ **Automate incident response** using custom forensic scripts
 
-### Next: Stack 57 - Advanced Data Structures →
+### What's Next?
+In the next stack, we'll dive into **Advanced Data Structures**. You'll learn how to handle complex data like JSON, CSV, and associative arrays to build even more powerful Bash applications!
+
+**Next: Stack 57 - Advanced Data Structures →**
 
 ---
 

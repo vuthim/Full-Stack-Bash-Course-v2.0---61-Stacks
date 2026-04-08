@@ -411,17 +411,70 @@ WantedBy=timers.target
 
 ---
 
+## 🎓 Final Project: Advanced Backup Scheduler (Cron vs. Systemd)
+
+Now that you've compared Cron and Systemd timers, let's see how a professional would implement the same task — a daily backup — using both methods. This comparison will help you decide which tool is right for your specific needs.
+
+### Scenario: Daily Backup of `/var/www`
+We want to backup our website files every day at 3:00 AM and keep a log of the results.
+
+### Option 1: The Classic Cron Approach
+Cron is great for quick, standalone tasks on any Linux system.
+
+```cron
+# Edit with crontab -e
+0 3 * * * /usr/local/bin/backup.sh >> /var/log/backup.log 2>&1
+```
+*   **Pros:** Single line, works everywhere, very easy to understand.
+*   **Cons:** No built-in way to handle dependencies (like waiting for the database to be up).
+
+### Option 2: The Modern Systemd Timer Approach
+Systemd timers are better for production environments where reliability and logging are critical.
+
+**The Service File (`backup.service`):**
+```ini
+[Unit]
+Description=Daily Website Backup
+After=network.target mysql.service # Wait for network and database!
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/backup.sh
+```
+
+**The Timer File (`backup.timer`):**
+```ini
+[Unit]
+Description=Run Website Backup every day at 3 AM
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true # Run immediately if the server was off at 3 AM!
+
+[Install]
+WantedBy=timers.target
+```
+*   **Pros:** Handles dependencies, has a "catch-up" feature (`Persistent=true`), and logs to `journalctl`.
+*   **Cons:** Requires two files and a bit more configuration.
+
+**Pro Tip:** Use **Cron** for your personal laptop scripts, but use **Systemd Timers** for production servers where "missing a run" is not an option!
+
+---
+
 ## ✅ Stack 24 Complete!
 
-You learned:
-- ✅ Cron syntax and common patterns
-- ✅ Cron environment and best practices
-- ✅ Systemd timer unit files
-- ✅ Systemd service unit files
-- ✅ Calendar and monotonic timers
-- ✅ When to use each tool
+Congratulations! You've mastered the art of advanced automation! You can now:
+- ✅ **Deep-dive into Cron syntax** for complex recurring schedules
+- ✅ **Build robust Systemd timers** with service dependencies
+- ✅ **Choose the right tool** for every scheduling task (Cron vs. Systemd)
+- ✅ **Handle missed runs** using Systemd's persistence features
+- ✅ **Monitor scheduled jobs** with professional-grade logging
+- ✅ **Schedule one-off tasks** like a pro with the `at` command
 
-### Next: Stack 25 - Zsh Essentials →
+### What's Next?
+In the next stack, we'll dive into **Zsh Essentials**. You'll learn how to supercharge your interactive terminal experience with plugins, themes, and advanced shell features!
+
+**Next: Stack 25 - Zsh Essentials →**
 
 ---
 

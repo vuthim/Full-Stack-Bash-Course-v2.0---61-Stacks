@@ -342,18 +342,69 @@ output "private_ip" {
 
 ---
 
+## 🎓 Final Project: Terraform Infrastructure Manager
+
+Now that you've mastered the concepts of Infrastructure as Code (IaC), let's see how a professional Cloud Architect might automate their Terraform workflows. We'll examine the "Terraform Manager" — a tool that simplifies the entire infrastructure lifecycle, from initialization to destruction.
+
+### What the Terraform Infrastructure Manager Does:
+1. **Automates Initialization** of Terraform backends and providers.
+2. **Validates Configurations** to catch syntax errors before they hit the cloud.
+3. **Simplifies Planning & Applying** by wrapping complex CLI flags.
+4. **Manages Workspaces** (e.g., Development vs. Production) with easy commands.
+5. **Audits Infrastructure State** by listing and showing managed resources.
+6. **Protects Against Accidental Deletion** by requiring clear confirmation for `destroy` commands.
+
+### Key Snippet: Automated Initialization & Validation
+A robust script ensures that Terraform is ready to go before attempting to make any changes to your infrastructure.
+
+```bash
+cmd_init() {
+    local dir=${1:-.}
+    
+    # Check if Terraform is installed first
+    if ! command -v terraform &>/dev/null; then
+        error "Terraform not found! Please install it first."
+        exit 1
+    fi
+    
+    cd "$dir"
+    # Initialize the project (downloads providers and sets up state)
+    terraform init
+    log "Infrastructure project initialized in $dir."
+}
+```
+
+### Key Snippet: Workspace Management
+Workspaces allow you to use the same code to build multiple environments. The manager makes switching between them a one-word command.
+
+```bash
+cmd_workspace_select() {
+    local name=$1
+    
+    # Switch to a specific workspace (e.g., 'staging' or 'production')
+    terraform workspace select "$name"
+    log "Switched to infrastructure workspace: $name"
+}
+```
+
+**Pro Tip:** Automation tools like this are how modern teams manage thousands of cloud resources without manual errors or configuration drift!
+
+---
+
 ## ✅ Stack 36 Complete!
 
-You learned:
-- ✅ What is Terraform
-- ✅ Installation
-- ✅ Provider configuration
-- ✅ Resources and variables
-- ✅ Outputs
-- ✅ State management
-- ✅ Modules basics
+Congratulations! You've successfully turned your infrastructure into code! You can now:
+- ✅ **Understand Terraform's "Declarative" model** (Define what you want, not how to get it)
+- ✅ **Manage cloud resources** across AWS, Azure, and Google Cloud
+- ✅ **Use Variables and Outputs** to build flexible, reusable infrastructure
+- ✅ **Master State Management** to keep track of your deployed resources
+- ✅ **Automate infrastructure changes** using Plans and Applies
+- ✅ **Use Workspaces** to manage multiple environments with the same code
 
-### Next: Stack 37 - Prometheus & Grafana →
+### What's Next?
+In the next stack, we'll dive into **Prometheus & Grafana**. You'll learn how to build professional monitoring dashboards to track the performance of your infrastructure in real-time!
+
+**Next: Stack 37 - Monitoring Stack →**
 
 ---
 

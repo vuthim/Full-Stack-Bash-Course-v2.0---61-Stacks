@@ -1,25 +1,32 @@
 # 🖥️ STACK 61: TMUX & SCREEN
 ## Terminal Multiplexers - Session Management
 
+**What is a Terminal Multiplexer?** Think of it like a web browser with tabs, but for your terminal. You can have multiple terminal sessions running in one window, detach from them (they keep running!), and reattach later - even from a different computer!
+
+**Why This Matters?** If you SSH into servers and lose your connection, any running scripts die too. With tmux/screen, your sessions survive disconnections. It's essential for anyone managing remote systems.
+
 ---
 
 ## 🔰 What is a Terminal Multiplexer?
 
 A terminal multiplexer lets you:
-- Run multiple terminal sessions in one window
-- Detach and reattach sessions remotely
-- Split screens into multiple panes
-- Share sessions with others
-- Keep processes running after logout
+- ✅ **Run multiple terminal sessions** in one window (like browser tabs)
+- ✅ **Detach and reattach sessions** remotely (your scripts keep running!)
+- ✅ **Split screens** into multiple panes (side-by-side terminals)
+- ✅ **Share sessions** with others (pair programming, debugging together)
+- ✅ **Keep processes running** after logout (no more "my script died when WiFi dropped")
 
-### tmux vs Screen
-| Feature | tmux | Screen |
-|---------|------|--------|
-| Status bar | Built-in | Needs customization |
-| Split panes | Easier syntax | More complex |
-| Configuration | Simple | More options |
-| Popularity | More modern | Legacy |
-| Copy mode | vi/emacs modes | vi/emacs modes |
+### tmux vs Screen (Which Should You Use?)
+| Feature | tmux | Screen | **Winner** |
+|---------|------|--------|------------|
+| **Status bar** | Built-in | Needs customization | tmux |
+| **Split panes** | Easier syntax | More complex | tmux |
+| **Configuration** | Simple (~/.tmux.conf) | More options | tmux (easier) |
+| **Popularity** | More modern, actively developed | Legacy, still widely available | tmux |
+| **Availability** | May need install | Pre-installed almost everywhere | Screen (for quick access) |
+| **Copy mode** | vi/emacs modes | vi/emacs modes | Tie |
+
+**Pro Tip:** Learn **tmux** for daily use (better features, modern). Know **screen** exists (it's everywhere as a fallback). The skills transfer - they work similarly!
 
 ---
 

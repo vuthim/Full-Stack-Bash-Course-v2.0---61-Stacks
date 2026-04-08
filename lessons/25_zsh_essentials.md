@@ -473,27 +473,59 @@ setopt EXTENDED_GLOB
 
 ---
 
-## ✅ Stack 25 Complete!
+## 🎓 Final Project: Zsh Configuration Manager
 
-You learned:
-- ✅ What is Zsh and why use it
-- ✅ Installing Zsh and Oh My Zsh
-- ✅ Configuration and customization
-- ✅ Zsh features (globbing, completion, history)
-- ✅ Using plugins
-- ✅ Zsh vs Bash scripting
+Now that you've mastered Zsh essentials, let's see how a professional scripter might automate their shell setup. We'll examine the "Zsh Manager" — a tool that installs Oh My Zsh, manages plugins and themes, and handles custom aliases automatically.
 
-### Next: Stack 26 - Vim for Scripters →
+### What the Zsh Configuration Manager Does:
+1. **Installs Oh My Zsh** and common plugins with a single command.
+2. **Manages Themes** by programmatically editing the `.zshrc` file.
+3. **Adds and Removes Plugins** without needing to manual text editing.
+4. **Manages Custom Aliases** by appending them to the configuration file.
+5. **Provides an Interactive CLI** to configure your shell on any new machine.
+6. **Validates Current Setup** to ensure all required directories exist.
+
+### Key Snippet: Installing Oh My Zsh Programmatically
+A good manager script can install Oh My Zsh in "unattended" mode, which means it won't prompt the user or change the shell automatically until it's ready.
+
+```bash
+cmd_install() {
+    # -fsSL: Fail silently, show errors, follow redirects
+    # --unattended: Don't ask questions or switch to zsh immediately
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+}
+```
+
+### Key Snippet: Modifying the .zshrc with Sed
+The manager uses `sed` to search for and replace specific lines in your configuration file.
+
+```bash
+cmd_theme() {
+    local theme=$1
+    # Find the line starting with ZSH_THEME= and replace the whole line
+    sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"$theme\"/" "$HOME/.zshrc"
+    log "Theme set to: $theme"
+}
+```
+
+**Pro Tip:** Automating your shell configuration means you can set up a brand new computer with all your favorite tools, aliases, and themes in seconds!
 
 ---
 
-## 📝 Challenge: Build Your Zsh Setup
+## ✅ Stack 25 Complete!
 
-Create a comprehensive ~/.zshrc that includes:
-1. Useful aliases for common tasks
-2. Custom prompt with git status
-3. Useful plugins installed
-4. Custom functions for frequently used operations
+Congratulations! You've successfully "turbocharged" your terminal experience! You can now:
+- ✅ **Understand the power of Zsh** and how it extends Bash
+- ✅ **Install and configure Oh My Zsh** for a better workflow
+- ✅ **Use advanced plugins** like autosuggestions and syntax highlighting
+- ✅ **Customize your prompt** with themes and git status indicators
+- ✅ **Master advanced globbing** and history features
+- ✅ **Automate your shell setup** using Zsh-aware scripts
+
+### What's Next?
+In the next stack, we'll dive into **Vim for Scripters**. You'll learn how to edit your scripts at lightning speed using the world's most powerful text editor!
+
+**Next: Stack 26 - Vim for Scripters →**
 
 ---
 

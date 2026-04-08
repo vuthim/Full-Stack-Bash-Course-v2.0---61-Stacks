@@ -318,16 +318,80 @@ sudo fail2ban-client status
 
 ---
 
+## 🎓 Final Project: Universal Firewall Manager
+
+Now that you've mastered the concepts of network security, let's see how a professional security engineer might build a cross-platform tool. We'll examine the "Firewall Manager" — a script that automatically detects which firewall your system is using (UFW, Firewalld, or Iptables) and provides a single, simple command-line interface to manage them all.
+
+### What the Universal Firewall Manager Does:
+1. **Auto-Detects Firewall Engine** (identifies if the system uses `ufw`, `firewalld`, or standard `iptables`).
+2. **Standardizes Allow/Deny Rules** (use `allow 80` regardless of the underlying tool).
+3. **Manages Services** by name (e.g., `allow http` or `allow ssh`).
+4. **Simplifies Lifecycle Management** (enabling, disabling, and resetting).
+5. **Provides a Unified Status** showing active rules in a readable format.
+6. **Persists Changes** by automatically reloading or saving rules as needed.
+
+### Key Snippet: Firewall Engine Detection
+Just like our package manager, the firewall tool needs to know "who is in charge" before it can send commands.
+
+```bash
+detect_firewall() {
+    # Check for the presence of common firewall management commands
+    if command -v ufw &>/dev/null; then
+        echo "ufw"         # Common on Ubuntu/Debian
+    elif command -v firewall-cmd &>/dev/null; then
+        echo "firewalld"   # Common on Fedora/CentOS/RHEL
+    elif command -v iptables &>/dev/null; then
+        echo "iptables"    # The "classic" Linux firewall
+    else
+        echo "none"
+    fi
+}
+```
+
+### Key Snippet: Standardized Rule Creation
+The manager uses a `case` statement to translate your simple "allow" request into the specific syntax required by the detected engine.
+
+```bash
+cmd_allow() {
+    local port=$1
+    local fw=$(detect_firewall)
+    
+    case $fw in
+        ufw)
+            sudo ufw allow "$port"/tcp
+            ;;
+        firewalld)
+            # Add port permanently AND reload the config
+            sudo firewall-cmd --add-port="$port"/tcp --permanent
+            sudo firewall-cmd --reload
+            ;;
+        iptables)
+            # Add a raw rule to the INPUT chain
+            sudo iptables -A INPUT -p tcp --dport "$port" -j ACCEPT
+            ;;
+    esac
+    log "Access allowed to port $port/tcp."
+}
+```
+
+**Pro Tip:** Automation like this is the secret to maintaining security across a fleet of servers running different Linux distributions!
+
+---
+
 ## ✅ Stack 35 Complete!
 
-You learned:
-- ✅ UFW setup and usage
-- ✅ firewalld (RHEL/CentOS)
-- ✅ Basic SSH security
-- ✅ Fail2ban installation
-- ✅ System hardening basics
+Congratulations! You've successfully built a "digital shield" around your system! You can now:
+- ✅ **Manage system firewalls** like a pro using UFW and Firewalld
+- ✅ **Secure your services** by allowing only necessary ports (HTTP, SSH, etc.)
+- ✅ **Protect against attacks** by denying unauthorized traffic
+- ✅ **Audit your security rules** to ensure your system is properly hardened
+- ✅ **Automate firewall changes** across different Linux distributions
+- ✅ **Understand the difference** between stateless and stateful firewalls
 
-### Next: Stack 36 - Terraform Basics →
+### What's Next?
+In the next stack, we'll dive into **Terraform Basics**. You'll learn how to treat your entire infrastructure as code, allowing you to build and destroy entire clouds with a single command!
+
+**Next: Stack 36 - Terraform Basics →**
 
 ---
 

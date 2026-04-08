@@ -262,7 +262,7 @@ tail -f /var/log/auth.log
 
 You learned:
 - ✅ Navigate directories (cd, pwd)
-- ✅ List files (ls的各种选项)
+- ✅ List files (various options like -l, -a, -h)
 - ✅ Create/remove directories (mkdir, rmdir)
 - ✅ Copy/move/rename (cp, mv, rm)
 - ✅ View file contents (cat, head, tail, less)

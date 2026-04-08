@@ -760,21 +760,73 @@ cat /etc/resolv.conf
 
 ---
 
+## 🎓 Final Project: Network Diagnostic Tool
+
+Now that you've mastered network commands, let's see how a professional network engineer might automate diagnostics. We'll examine the "Network Tools" script — a multi-purpose utility that combines connectivity tests, DNS lookups, and port scanning into one powerful command.
+
+### What the Network Diagnostic Tool Does:
+1. **Automates Connectivity Tests** with smart ping and traceroute wrappers.
+2. **Performs Detailed DNS Lookups** for multiple record types (A, MX, TXT) at once.
+3. **Checks Port Status** using pure Bash (no external tools required!).
+4. **Scans Local Networks** to discover active devices.
+5. **Monitors Bandwidth** and active connections in real-time.
+6. **Verifies Web Service Health** by checking HTTP status codes.
+
+### Key Snippet: Port Checking with Pure Bash
+Did you know Bash can talk to network ports directly? This is much faster than using external tools like `nc` or `nmap` for simple checks.
+
+```bash
+cmd_port_check() {
+    local host=$1
+    local port=$2
+    
+    # timeout: don't wait forever
+    # /dev/tcp/host/port: Bash's built-in network redirection
+    if timeout 3 bash -c "echo >/dev/tcp/$host/$port" 2>/dev/null; then
+        log "Port $port is OPEN on $host"
+    else
+        error "Port $port is CLOSED on $host"
+    fi
+}
+```
+
+### Key Snippet: Local Network Discovery
+You can use a simple loop to find every device on your local network.
+
+```bash
+cmd_scan_local() {
+    # Get your gateway IP (e.g., 192.168.1.1)
+    local gateway=$(ip route | awk '/default/ {print $3}')
+    local subnet=${gateway%.*}  # Extract 192.168.1
+    
+    echo "Scanning $subnet.0/24..."
+    for ip in $(seq 1 254); do
+        # -c 1: send only 1 packet
+        # &: run in background for speed
+        ping -c 1 "$subnet.$ip" &>/dev/null && echo "Found: $subnet.$ip" &
+    done
+    wait # Wait for all pings to finish
+}
+```
+
+**Pro Tip:** Combining these tools into a single script allows you to run a full system health check in seconds rather than minutes.
+
+---
+
 ## ✅ Stack 17 Complete!
 
-You learned:
-- ✅ Network basics (ping, DNS, IP)
-- ✅ Diagnostic commands (traceroute, netstat, ss)
-- ✅ Port scanning scripts
-- ✅ Bandwidth monitoring
-- ✅ Server reachability automation
-- ✅ Network discovery/inventory
-- ✅ Firewall management (iptables, UFW)
-- ✅ Comprehensive network reports
-- ✅ Network dashboard
-- ✅ Troubleshooting
+Congratulations! You've successfully mastered the "language of the internet"! You can now:
+- ✅ **Diagnose connectivity issues** like a pro using Ping and Traceroute
+- ✅ **Manage DNS** and understand how names are translated to IPs
+- ✅ **Monitor network interfaces** and active connections
+- ✅ **Check port status** using built-in Bash features
+- ✅ **Scan networks** for devices and open services
+- ✅ **Automate web health checks** using Curl
 
-### Next: Stack 18 - System Monitoring →
+### What's Next?
+In the next stack, we'll dive into **System Monitoring**. You'll learn how to build real-time dashboards to track your computer's health, from CPU usage to disk space!
+
+**Next: Stack 18 - System Monitoring →**
 
 ---
 

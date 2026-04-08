@@ -639,21 +639,64 @@ git gc --prune=now --aggressive
 
 ---
 
+## 🎓 Final Project: Git Script Manager
+
+Now that you've mastered the essential Git commands, let's see how a professional scripter might automate their Git workflow. We'll examine the "Git Script Manager" — a tool that simplifies repository management by wrapping common Git commands into a single, easy-to-use Bash script.
+
+### What the Git Script Manager Does:
+1. **Initializes** new repositories with standard configurations.
+2. **Clones** remote repos into a dedicated workspace.
+3. **Shows a clean Status** summary including staged, modified, and untracked counts.
+4. **Automates Commits** by adding all changes and prompting for a message.
+5. **Handles Branches** (create, delete, list) with simple commands.
+6. **Performs Rollbacks** safely using `git reset --hard`.
+
+### Key Snippet: Checking for a Git Repository
+A robust script should always check if it's running inside a valid Git repository before executing commands.
+
+```bash
+is_git_repo() {
+    # Returns 0 if true, 1 if false
+    git rev-parse --git-dir >/dev/null 2>&1
+}
+
+# Usage in the script:
+if ! is_git_repo; then
+    error "Not a Git repository! Please run this inside a repo."
+    exit 1
+fi
+```
+
+### Key Snippet: Programmatic Status Summary
+Instead of just running `git status`, our manager parses the output to give a "human-friendly" overview.
+
+```bash
+cmd_status() {
+    echo "Branch: $(git branch --show-current)"
+    echo "Staged: $(git diff --cached --numstat | wc -l)"
+    echo "Modified: $(git diff --numstat | wc -l)"
+    echo "Untracked: $(git ls-files --others --exclude-standard | wc -l)"
+}
+```
+
+**Pro Tip:** Automation tools like this help you maintain a consistent workflow and reduce the chance of making mistakes during repetitive Git tasks.
+
+---
+
 ## ✅ Stack 14 Complete!
 
-You learned:
-- ✅ Git installation and configuration
-- ✅ Essential Git commands
-- ✅ Working with remotes
-- ✅ Branching strategies
-- ✅ .gitignore best practices
-- ✅ Advanced Git (stash, cherry-pick, tags)
-- ✅ Script versioning workflow
-- ✅ Automated versioning
-- ✅ Complete practice workflow
-- ✅ Troubleshooting common issues
+Congratulations! You've unlocked the power of version control! You can now:
+- ✅ **Install and configure Git** like a professional
+- ✅ **Manage files** with Add, Commit, and Status
+- ✅ **Collaborate** using Push, Pull, and Remotes
+- ✅ **Experiment safely** with Branches and Stashing
+- ✅ **Automate your workflow** using Git-aware scripts
+- ✅ **Rollback changes** whenever things go wrong
 
-### Next: Stack 15 - Docker & Bash →
+### What's Next?
+In the next stack, we'll explore **Docker & Bash**. You'll learn how to package your scripts into containers so they run identically on any machine, anywhere in the world!
+
+**Next: Stack 15 - Docker & Bash →**
 
 ---
 

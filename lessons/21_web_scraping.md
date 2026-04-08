@@ -515,17 +515,61 @@ Create a script that:
 
 ---
 
+## 🎓 Final Project: The Bash Web Scraper
+
+Now that you've mastered `curl` and data extraction, let's see how a professional scripter might build a multi-purpose scraping tool. We'll examine the "Web Scraper" — a utility that can fetch pages, parse JSON, and extract titles, links, and images with ease.
+
+### What the Bash Web Scraper Does:
+1. **Fetches Content** silently and efficiently using `curl -s`.
+2. **Parses JSON APIs** and pretty-prints them using `jq` or `python`.
+3. **Extracts Metadata** like page titles using `grep` and `sed`.
+4. **Scrapes Links and Images** from any HTML page.
+5. **Calls APIs** with proper JSON headers automatically.
+6. **Performs Targeted Extraction** using custom regex patterns.
+
+### Key Snippet: Extracting Page Titles
+The scraper uses a clever combination of `grep` and `sed` to pull the text between HTML tags without needing a heavy parser like Beautiful Soup.
+
+```bash
+cmd_title() {
+    local url=$1
+    # -oE: Only output the matching part of the line
+    # (.*?): Non-greedy match for everything inside tags
+    curl -s "$url" | grep -oE '<title>(.*?)</title>' | sed 's/<title>//;s/<\/title>//'
+}
+```
+
+### Key Snippet: Pretty-Printing JSON
+When working with APIs, raw JSON is hard to read. The scraper attempts to use `jq` (the industry standard) or falls back to a built-in Python module.
+
+```bash
+cmd_json() {
+    local url=$1
+    # Try jq first, then Python, then fallback to raw output
+    curl -s "$url" | jq . 2>/dev/null || \
+    curl -s "$url" | python3 -m json.tool 2>/dev/null || \
+    curl -s "$url"
+}
+```
+
+**Pro Tip:** While tools like Python are great for complex scraping, a Bash script is often 10x faster for quick data extraction tasks!
+
+---
+
 ## ✅ Stack 21 Complete!
 
-You learned:
-- ✅ curl essentials and advanced options
-- ✅ Data extraction techniques (grep, sed, jq)
-- ✅ API integration with JSON parsing
-- ✅ Web scraping scripts (scraper, monitor, checker)
-- ✅ Best practices and ethical scraping
-- ✅ Troubleshooting common issues
+Congratulations! You've successfully turned the internet into your personal playground! You can now:
+- ✅ **Master curl** for all types of HTTP requests (GET, POST, etc.)
+- ✅ **Interact with APIs** like a professional developer
+- ✅ **Extract specific data** from HTML using Grep and Sed
+- ✅ **Parse complex JSON** data using JQ
+- ✅ **Automate web tasks** like monitoring prices or checking links
+- ✅ **Scrape images and links** from any website automatically
 
-### Next: Stack 22 - Testing Bash Scripts →
+### What's Next?
+In the next stack, we'll dive into **Testing Bash Scripts**. You'll learn how to write automated tests to ensure your scripts are reliable and bug-free before they go into production!
+
+**Next: Stack 22 - Testing Bash Scripts →**
 
 ---
 

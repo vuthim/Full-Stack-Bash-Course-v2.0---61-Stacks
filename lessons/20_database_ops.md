@@ -619,18 +619,72 @@ Create a health check that:
 
 ---
 
+## 🎓 Final Project: Database Automation Manager
+
+Now that you've mastered database commands, let's see how a professional Database Administrator (DBA) might automate their daily tasks. We'll examine the "Database Manager" — a versatile tool that handles both MySQL and PostgreSQL operations, from running queries to automated backups and restores.
+
+### What the Database Automation Manager Does:
+1. **Multi-Database Support** (works with both MySQL and PostgreSQL).
+2. **Environment-Driven Configuration** (uses variables like `DB_HOST`, `DB_USER`).
+3. **Automates Backups** for individual databases or the entire server.
+4. **Handles Compressed Restores** (automatically unzips `.sql.gz` files).
+5. **Lists Tables** and runs custom SQL queries from the command line.
+6. **Cleans Up System Databases** by excluding `information_schema` from backups.
+
+### Key Snippet: Programmatic Query Execution
+The manager uses a helper function to handle the connection details, making the main logic much cleaner.
+
+```bash
+mysql_exec() {
+    # Check if a password is provided
+    if [ -n "$DB_PASS" ]; then
+        # -e: execute the query and exit
+        mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" -e "$1"
+    else
+        mysql -h "$DB_HOST" -u "$DB_USER" "$DB_NAME" -e "$1"
+    fi
+}
+
+# Now running a query is as simple as:
+mysql_exec "SELECT * FROM users LIMIT 5;"
+```
+
+### Key Snippet: Backing Up All Databases
+This snippet shows how to loop through all databases on a server and create individual compressed backups.
+
+```bash
+cmd_backup() {
+    # Get a list of all databases, excluding the "Database" header
+    databases=$(mysql -u "$DB_USER" -e "SHOW DATABASES;" | grep -v Database)
+    
+    for db in $databases; do
+        # Skip system databases
+        if [[ "$db" != "information_schema" && "$db" != "performance_schema" ]]; then
+            echo "Backing up $db..."
+            mysqldump "$db" | gzip > "${db}_backup.sql.gz"
+        fi
+    done
+}
+```
+
+**Pro Tip:** Automating your backups is the single most important thing you can do for your data. A backup script that runs automatically is worth its weight in gold!
+
+---
+
 ## ✅ Stack 20 Complete!
 
-You learned:
-- ✅ MySQL/MariaDB basics and commands
-- ✅ Secure backup scripts with rotation
-- ✅ User management scripts
-- ✅ Database health monitoring
-- ✅ PostgreSQL operations
-- ✅ Security best practices
-- ✅ Troubleshooting common issues
+Congratulations! You've successfully turned Bash into a powerful database conductor! You can now:
+- ✅ **Manage MySQL and PostgreSQL** from the command line
+- ✅ **Automate database backups** and rotations like a pro
+- ✅ **Run complex SQL queries** and export data directly from scripts
+- ✅ **Restore databases** from compressed backup files
+- ✅ **Monitor database health** and track connection counts
+- ✅ **Manage users and permissions** across multiple database systems
 
-### Next: Stack 21 - Web Scraping →
+### What's Next?
+In the next stack, we'll dive into **Web Scraping**. You'll learn how to use Bash to pull data from websites and turn the internet into your personal database!
+
+**Next: Stack 21 - Web Scraping →**
 
 ---
 
