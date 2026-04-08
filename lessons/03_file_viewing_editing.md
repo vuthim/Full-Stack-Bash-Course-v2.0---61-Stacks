@@ -475,6 +475,7 @@ Congratulations! You've mastered the "eyes and hands" of the Linux system! You c
 - ✅ **Monitor live systems** using real-time log following
 
 ### Navigation
+-- **Contents:** [Stack 0 → Contents](00_contents.md) | 
 - **Previous:** [Stack 2 → File & Directory Operations](02_file_operations.md)
 - **Next:** [Stack 3B → Quoting, Expansion & Safe Handling](03b_quoting_expansion.md)
 

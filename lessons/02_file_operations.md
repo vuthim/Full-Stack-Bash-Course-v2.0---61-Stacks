@@ -379,7 +379,8 @@ You learned:
 - ✅ File information (wc, file, stat)
 - ✅ Link files (ln)
 
-### Navigation
+### 
+- **Contents:** [Stack 0 → Contents](00_contents.md) | 
 - **Previous:** [Stack 1 → Bash Fundamentals](01_fundamentals.md)
 - **Next:** [Stack 3 → File Viewing & Editing](03_file_viewing_editing.md)
 

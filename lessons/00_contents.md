@@ -1,1 +1,69 @@
 ***Contents***
+
+- [Fundamentals](01_fundamentals.md) – Shell overview, history, terminal basics, and course expectations.
+- [File Operations](02_file_operations.md) – Creating, copying, moving, linking, and managing files and directories.
+- [File Viewing & Editing](03_file_viewing_editing.md) – Displaying and editing files with `cat`, `less`, `head`, `nano`, `vim`, and friends.
+- [Quoting & Expansion](03b_quoting_expansion.md) – Working with literal strings, command substitution, and safe quoting patterns.
+- [Text Processing](04_text_processing.md) – Filtering and transforming text with `grep`, `awk`, `sed`, `cut`, `sort`, and `uniq`.
+- [Variables](05_variables.md) – Declaring variables, using defaults, arithmetic, and exporting to subshells.
+- [Control Flow](06_control_flow.md) – `if`, `case`, and other conditionals plus test expressions.
+- [Loops](07_loops.md) – Iterating with `for`, `while`, `until`, and handling complex collections.
+- [Functions](08_functions.md) – Defining reusable functions, parameter handling, and return semantics.
+- [IO Redirection](09_io_redirection.md) – Redirecting stdout/stderr, pipes, here docs, and process substitution.
+- [Regular Expressions](10_regular_expressions.md) – Constructing and applying regex patterns for matching and validation.
+- [Process Management](11_process_management.md) – Managing jobs, signals, `ps`, `top`, and background/foreground tasks.
+- [Advanced Scripting](12_advanced_scripting.md) – Strict mode, error handling, logging, and modular script design.
+- [Portability & POSIX](12b_portability_posix.md) – Writing scripts that comply with POSIX sh and behave across shells.
+- [Cron Scheduling](13_cron_scheduling.md) – Automating recurring tasks with `cron`, `crontab`, and troubleshooting runs.
+- [Git for Scripts](14_git_for_scripts.md) – Version control for scripts, Git workflows, hooks, and collaboration.
+- [Docker & Bash](15_docker_bash.md) – Bash inside Docker: entrypoints, automation, copy scripts, and container ops.
+- [SSH & Remote](16_ssh_remote.md) – Automating SSH, key management, remote command execution, and tunneling.
+- [Network Scripting](17_network_scripting.md) – Scripting `curl`, `nc`, DNS lookups, and common networking tasks.
+- [System Monitoring](18_system_monitoring.md) – Capturing metrics with `vmstat`, `iostat`, `dstat`, and alert scripts.
+- [AWS CLI](19_aws_cli.md) – Orchestrating AWS services with the CLI, credentials, and reusable scripts.
+- [Database Operations](20_database_ops.md) – Interacting with databases, running queries, and handling CSV data.
+- [Web Scraping](21_web_scraping.md) – Fetching and parsing HTML/API data using `curl`, `jq`, and text tools.
+- [Testing Bash Scripts](22_testing_bash.md) – Testing Bash scripts, asserting outputs, and integrating with CI.
+- [Security Scripting](23_security_scripting.md) – Secrets management, vaulting, auditing, and secure script practices.
+- [Advanced Scheduling](24_scheduling_advanced.md) – `at`, systemd timers, and advanced cron constructs.
+- [Zsh Essentials](25_zsh_essentials.md) – Porting scripts to Zsh and leveraging its extended features.
+- [Vim Editor](26_vim_editor.md) – Vim navigation, editing, macros, and script-friendly workflows.
+- [Systemd](27_systemd.md) – Creating units, timers, and managing services through automation.
+- [Package Management](28_package_management.md) – Automating installs/updates across package managers.
+- [CI/CD Pipelines](29_ci_cd_pipelines.md) – Bash in CI/CD: pipelines, caching, artifacts, and runners.
+- [Logging](30_logging.md) – Structured logging, rotation, parsing, and monitoring disk usage.
+- [Kubernetes](31_kubernetes.md) – Scripting `kubectl`, templating, and automating cluster tasks.
+- [User Management](32_user_management.md) – Managing users, groups, sudo privileges, and audits.
+- [LVM](33_lvm.md) – Automating logical volume management, snapshots, and resizing.
+- [NFS & Samba](34_nfs_samba.md) – Mounting shares and automating NFS/Samba workflows.
+- [Firewall](35_firewall.md) – Managing `ufw`, `firewalld`, `iptables`, and firewall automation.
+- [Terraform](36_terraform.md) – Wrapping Terraform runs, templating, and helper scripts.
+- [Monitoring Stack](37_monitoring_stack.md) – Integrating Prometheus, Grafana, exporters, and alerting.
+- [Ansible](38_ansible.md) – Running playbooks, inventories, and automation helpers.
+- [System Hardening](39_system_hardening.md) – CIS benchmarks, auditing, and enforcing hardening controls.
+- [GitLab CI](40_gitlab_ci.md) – Deep dive into GitLab CI, runners, caching, and advanced scripting.
+- [Performance Tuning](41_performance_tuning.md) – Profiling, tuning kernel parameters, and reporting performance.
+- [Raspberry Pi](42_raspberry_pi.md) – Bootstrapping Pis, GPIO automation, and remote management.
+- [WSL](43_wsl.md) – Scripting for WSL, file sharing, and interoperability tips.
+- [ShellCheck](44_shellcheck.md) – Using ShellCheck, interpreting warnings, and fixing scripts.
+- [Advanced Patterns](45_advanced_patterns.md) – Design patterns, modularization, and reusable script libraries.
+- [Career & Production](46_career_production.md) – Packaging scripts, building portfolios, and production-readiness.
+- [Advanced Git](47_advanced_git.md) – Rebasing, hooks, submodules, and Git plumbing for scripting workflows.
+- [Load Balancing](48_load_balancing.md) – Automating HAProxy/Nginx tasks and service health checks.
+- [High Availability](49_high_availability.md) – Building resilient systems, failover scripting, and keepalived.
+- [Email Server](50_email_server.md) – Automating Postfix/Sendmail tasks, queues, and monitoring.
+- [DNS Management](51_dns_management.md) – Scripting DNS zone updates, lookups, and troubleshooting.
+- [SSL/TLS](52_ssl_tls.md) – Managing certificates, OCSP, and automating OpenSSL workflows.
+- [Terminal UI](53_terminal_ui.md) – Building TUI interfaces with `dialog`, `whiptail`, and curses helpers.
+- [IPC Mechanisms](54_ipc_mechanisms.md) – Using pipes, FIFOs, sockets, and shared memory from Bash.
+- [Advanced Debugging](55_advanced_debugging.md) – Tracing execution, `set -x`, `strace`, and debugging techniques.
+- [Security Forensics](56_security_forensics.md) – Evidence collection, hashing, and automating forensic tasks.
+- [Data Structures](57_data_structures.md) – Implementing arrays, stacks, queues, and maps with Bash features.
+- [API Services](58_api_services.md) – Calling APIs, processing JSON, retries, and integration scripts.
+- [Multi-Cluster](59_multi_cluster.md) – Handling multiple clusters, contexts, and environment automation.
+- [Awk Deep Dive](60_awk_deep_dive.md) – Mastering `awk` for advanced parsing and reporting.
+- [TMUX & Screen](61_tmux_screen.md) – Automating tmux/screen sessions, layouts, and scripting workflows.
+- [Kernel Tuning](62_kernel_tuning.md) – Adjusting `sysctl`, building modules, and automated kernel checks.
+- [Network Namespaces](63_network_namespaces.md) – Orchestrating isolated network stacks via namespaces.
+- [Log Aggregation](64_log_aggregation.md) – Collecting, parsing, and shipping logs to central systems.
+- [Service Mesh](65_service_mesh.md) – Automating Istio/Consul/Linkerd workflows, proxies, and observability.
