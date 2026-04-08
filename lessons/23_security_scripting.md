@@ -1,16 +1,25 @@
 # 🔒 STACK 23: SECURITY SCRIPTING
 ## Secure Scripting Best Practices
 
+**What is Security Scripting?** Think of security scripts as automated guards watching your systems. They check for weaknesses, enforce rules, and alert you to problems - 24/7, without getting tired.
+
+**⚠️ SECURITY WARNING:** Security scripts are one piece of the puzzle. They don't replace proper system hardening, firewalls, or good practices. Security is layered - like an onion (or a castle with multiple walls)!
+
 ---
 
 ## 🔰 Why Security Scripting?
 
 Every script you write is a potential vulnerability if not secured properly. This lesson covers:
-- Preventing command injection
-- Protecting sensitive data
-- Secure file handling
-- Input validation
-- Proper permissions
+- ✅ **Preventing command injection** - Stop attackers from running commands through your inputs
+- ✅ **Protecting sensitive data** - Keep passwords, keys, and tokens safe
+- ✅ **Secure file handling** - Proper permissions and ownership
+- ✅ **Input validation** - Never trust user input!
+- ✅ **Proper permissions** - Least privilege principle
+
+### The Golden Rule of Script Security
+```
+"NEVER trust input. ALWAYS validate. QUOTE everything."
+```
 
 ---
 

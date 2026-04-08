@@ -1,25 +1,29 @@
 # 🔀 STACK 6: CONTROL FLOW
-## Making Decisions in Your Scripts
+## Making Decisions in Your Scripts (If This, Then That)
 
 ---
 
-## 🔀 The if Statement
+## 🔀 The if Statement (Bash's Decision Maker)
+Think of if statements as Bash's way of making decisions: "If condition is true, do this; otherwise, do that."
 
-### Basic Syntax
+### Basic Syntax (How to Make Decisions in Bash)
+
+Think of if statements as Bash's way of asking questions and taking action based on the answer:
+
 ```bash
-# Simple if
+# Simple if - "If this is true, then do this"
 if [ condition ]; then
     command
 fi
 
-# if-else
+# if-else - "If this is true, do this; otherwise, do that"
 if [ condition ]; then
     command1
 else
     command2
 fi
 
-# if-elif-else
+# if-elif-else - "Check multiple conditions in order"
 if [ condition1 ]; then
     command1
 elif [ condition2 ]; then

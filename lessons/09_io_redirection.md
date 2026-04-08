@@ -1,5 +1,7 @@
 # 🔀 STACK 9: INPUT/OUTPUT & REDIRECTION
-## Controlling Data Flow
+## Controlling Where Data Goes and Comes From
+
+Think of data flow like plumbing in your house - you can redirect water (data) to go where you want it to go, instead of just letting it flow to the default places.
 
 ---
 

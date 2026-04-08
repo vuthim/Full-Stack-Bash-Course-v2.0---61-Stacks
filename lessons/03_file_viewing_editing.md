@@ -1,15 +1,15 @@
 # 📝 STACK 3: FILE VIEWING, EDITING & SAFE HANDLING
-## Text Editors, Viewers & Critical Safety Fundamentals
+## Looking at and Changing Files Safely
 
 ---
 
-## Part A: File Viewing & Text Editors
+## Part A: Looking at Files and Using Text Editors
 
 ---
 
-## 🔍 Advanced File Viewing
+## 🔍 Advanced Ways to Look at Files
 
-### cat - More Than Just Display
+### cat - More Than Just Displaying Files
 ```bash
 cat file.txt                    # Display file
 cat -n file.txt                 # Number all lines

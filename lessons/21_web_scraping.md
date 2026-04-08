@@ -3,15 +3,26 @@
 
 > *"Note: For comprehensive REST API development, see Stack 58. This stack covers CLI-focused data extraction."*
 
+**What is Web Scraping?** Think of it as a robot reading web pages for you. Instead of manually opening a browser and copying data, your script does it automatically.
+
+**⚠️ Ethics & Legal Warning:** Always respect:
+- `robots.txt` files (they tell you what's OK to scrape)
+- Website terms of service
+- Rate limits (don't hammer servers)
+- Copyright and data ownership laws
+
 ---
 
 ## 🔰 Why curl & Web Scraping?
 
-- Automate API interactions
-- Extract data from websites
-- Download files in bulk
-- Monitor web services
-- Build dashboards from web data
+- ✅ **Automate API interactions** - Test APIs without a GUI tool
+- ✅ **Extract data from websites** - Monitor prices, news, weather
+- ✅ **Download files in bulk** - Automate repetitive downloads
+- ✅ **Monitor web services** - Check if sites are up, track changes
+- ✅ **Build dashboards from web data** - Pull data into your own tools
+
+### curl Analogy for Beginners
+`curl` is like a programmable web browser. Instead of clicking and scrolling, you tell it exactly what to fetch and what to do with it.
 
 ---
 

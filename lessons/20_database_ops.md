@@ -1,15 +1,31 @@
 # 🗄️ STACK 20: DATABASE OPERATIONS
 ## MySQL/MariaDB & PostgreSQL Scripting
 
+**What Are We Doing?** Bash acts as the "conductor" that automates database tasks (backups, user management, health checks). The databases are the "orchestra" - powerful but need direction!
+
+**⚠️ Safety First:** Database operations can be destructive. Always:
+- Test on a non-production database first
+- Have backups before running destructive scripts
+- Never run scripts as root unless necessary
+
 ---
 
 ## 🔰 Why Script Database Operations?
 
-- Automate backups
-- Manage users and permissions
-- Monitor database health
-- Deploy schema changes
-- Run migrations
+- ✅ **Automate backups** - Daily dumps without manual work
+- ✅ **Manage users and permissions** - Onboard/offboard quickly
+- ✅ **Monitor database health** - Catch issues before they become outages
+- ✅ **Deploy schema changes** - Version-controlled database structure
+- ✅ **Run migrations** - Move data between environments safely
+
+### Which Database Should I Use?
+
+| Database | Best For | Quick Fact |
+|----------|----------|------------|
+| **MySQL/MariaDB** | Web apps, WordPress, general use | Most popular open-source DB |
+| **PostgreSQL** | Complex queries, data integrity | Most advanced open-source DB |
+| **MongoDB** | Documents, JSON-like data | NoSQL, flexible schema |
+| **Redis** | Caching, sessions, queues | In-memory, super fast |
 
 ---
 

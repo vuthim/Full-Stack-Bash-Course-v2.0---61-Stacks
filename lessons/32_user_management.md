@@ -1,6 +1,10 @@
 # 👥 STACK 32: USER MANAGEMENT
 ## Creating and Managing Users in Linux
 
+**What is User Management?** Linux is a multi-user system - multiple people (and services) can use the same computer. User management is how you control who has access and what they can do.
+
+**Security First:** Every user account is a potential security boundary. Give users only the permissions they NEED (least privilege), not everything they might want.
+
 ---
 
 ## 🔰 User Management Basics
@@ -8,11 +12,13 @@
 Linux is a multi-user system where you can create, modify, and delete user accounts with different permission levels.
 
 ### Types of Users
-| Type | UID | Description |
-|------|-----|-------------|
-| Root | 0 | Superuser (full access) |
-| System | 1-999 | Services and daemons |
-| Regular | 1000+ | Normal users |
+| Type | UID Range | Description | Examples |
+|------|-----------|-------------|----------|
+| **Root** | 0 | Superuser (full access) | System administrator |
+| **System** | 1-999 | Services and daemons | www-data, mysql, nginx |
+| **Regular** | 1000+ | Normal users | john, sarah, deploy |
+
+**Pro Tip:** System accounts (UID 1-999) are for SERVICES, not people. They usually can't log in - they just run background processes!
 
 ---
 

@@ -1,16 +1,25 @@
 # ☁️ STACK 19: AWS CLI SCRIPTING
 ## Cloud Automation with AWS
 
+**What is AWS CLI?** Think of it as a remote control for Amazon's cloud services. Instead of clicking around in a web browser, you type commands to create servers, store files, and manage everything - and you can script it all!
+
+**⚠️ Cost Awareness:** AWS services cost money. Always check what you're creating and clean up when done. This guide shows costs where relevant, but always verify current pricing!
+
 ---
 
 ## 🔰 Why AWS CLI?
 
 AWS CLI enables:
-- **Automation** - Script everything
-- **Cost savings** - Start/stop instances on schedule
-- **Backup automation** - S3 backups
-- **Infrastructure as Code** - CLI-driven deployments
-- **Monitoring** - Cost and resource tracking
+- ✅ **Automation** - Script everything (no more manual console clicks)
+- ✅ **Cost savings** - Start/stop instances on schedule (don't pay for idle servers!)
+- ✅ **Backup automation** - S3 backups on autopilot
+- ✅ **Infrastructure as Code** - CLI-driven deployments (reproducible)
+- ✅ **Monitoring** - Cost and resource tracking
+
+### Real-World Example
+Instead of paying for a dev server 24/7 (~$70/month), script it to:
+- Start at 9 AM, stop at 6 PM on weekdays
+- Save ~$45/month = ~$540/year!
 
 ---
 

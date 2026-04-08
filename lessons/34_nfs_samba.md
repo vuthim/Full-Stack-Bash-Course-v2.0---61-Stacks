@@ -1,17 +1,27 @@
 # 🌐 STACK 34: NETWORK FILE SYSTEMS
 ## NFS, Samba, and SSHFS
 
+**What are Network File Systems?** Think of them like a shared Google Drive, but for Linux/Windows servers. Instead of copying files between machines, you mount a remote folder so it appears as if it's on your own computer!
+
+**Why This Matters:** Network file sharing is essential for collaborative work, centralized storage, and backup systems. Every IT team needs at least one of these!
+
 ---
 
 ## 🔰 Network File Systems
 
 Network file systems allow sharing files between computers over a network.
 
-| System | Protocol | Best For |
-|--------|----------|----------|
-| NFS | NFS | Unix/Linux |
-| Samba | SMB/CIFS | Windows/Linux |
-| SSHFS | SSH | Secure/file transfer |
+### Which One Should You Use?
+| System | Protocol | Best For | Analogy |
+|--------|----------|----------|---------|
+| **NFS** | NFS | Unix/Linux ↔ Unix/Linux | A bridge between Linux servers |
+| **Samba** | SMB/CIFS | Windows ↔ Linux sharing | A translator between Windows and Linux |
+| **SSHFS** | SSH | Quick, secure access | A secure tunnel for files |
+
+**Pro Tip:** 
+- Linux-to-Linux? Use **NFS** (fastest)
+- Windows and Linux need to share? Use **Samba**
+- Need quick, one-time access? Use **SSHFS** (easiest setup)
 
 ---
 

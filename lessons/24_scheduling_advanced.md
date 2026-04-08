@@ -1,16 +1,31 @@
 # ⏰ STACK 24: ADVANCED SCHEDULING
 ## Cron vs Systemd Timers
 
+**Building on Stack 13:** You already know cron basics. Now let's level up - learn when to use cron vs systemd timers, handle dependencies between jobs, and avoid scheduling pitfalls.
+
+**Quick Decision Guide:**
+- **Use Cron** when: Simple schedules, legacy systems, quick one-liners
+- **Use Systemd Timers** when: You need dependencies, logging, or complex timing
+
 ---
 
 ## 🔰 Why Advanced Scheduling?
 
 Cron is classic, but Systemd timers offer:
-- Better dependency handling
-- Precise timing control
-- Built-in logging
-- Persistence across reboots
-- Better resource management
+- ✅ **Better dependency handling** - "Run this AFTER network is ready"
+- ✅ **Precise timing control** - Sub-second accuracy if needed
+- ✅ **Built-in logging** - No more guessing if jobs ran
+- ✅ **Persistence across reboots** - Never miss a scheduled run
+- ✅ **Better resource management** - Control CPU/memory per job
+
+### When to Use What?
+```
+Simple schedule (daily backup)?          → Cron ✅
+Need to run after another service?       → Systemd Timer ✅
+Running on an old server without systemd? → Cron ✅
+Need detailed logs of every run?         → Systemd Timer ✅
+Quick one-off task?                       → at command ✅
+```
 
 ---
 

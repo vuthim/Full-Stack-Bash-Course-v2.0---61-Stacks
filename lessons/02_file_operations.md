@@ -74,13 +74,14 @@ mkdir dir1 dir2 dir3       # Create multiple
 mkdir -p prc       # Create nested (parent dirs)
 mkdir -p backup/{2024,2025}# Create with braces
 ```
+<img src="/assets/image.png"  width="500">
 
 ### rmdir - Remove Directory (only if empty)
 ```bash
 rmdir myfolder             # Remove empty directory
 rmdir -p dir/subdir  roject/s      # Remove and parent if empty
 ```
-
+<img src="" width="400">
 ---
 
 ## 📄 File Operations

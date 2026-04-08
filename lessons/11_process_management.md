@@ -1,5 +1,7 @@
 # ⚙️ STACK 11: PROCESS MANAGEMENT
-## Controlling Running Programs
+## Controlling Running Programs (Like Being a Computer Traffic Cop)
+
+Think of your computer as a busy city with thousands of cars (programs) running all at once. Process management is like being a traffic cop - you get to see what's running, direct traffic, speed things up or slow them down, and even remove problematic vehicles when needed.
 
 ---
 

@@ -1,27 +1,33 @@
 # 🧪 STACK 22: TESTING BASH SCRIPTS
 ## Unit Testing & Test-Driven Development
 
+**What is Testing?** Think of tests as a safety net - they catch bugs before your users (or your future self) find them the hard way. Just like you'd test a bridge before driving on it, you test scripts before relying on them.
+
+**Why Bother?** "It works on my machine" isn't good enough. Tests prove your script works correctly, today and after every change.
+
 ---
 
 ## 🔰 Why Test Bash Scripts?
 
 Testing ensures:
-- Scripts work as expected
-- Bugs are caught early
-- Changes don't break existing functionality
-- Documentation is clear
-- Refactoring is safe
+- ✅ **Scripts work as expected** - Verify before deploying
+- ✅ **Bugs are caught early** - Fix when it's cheap, not after production breaks
+- ✅ **Changes don't break things** - Refactor with confidence
+- ✅ **Documentation is clear** - Tests show how code should be used
+- ✅ **Refactoring is safe** - Change internals without breaking behavior
 
-### Testing Pyramid for Bash
+### Testing Pyramid for Bash (Keep It Simple)
 ```
-        /\
-       /  \     Integration Tests
-      /----\    (full scripts)
-     /      \
-    /--------\  Unit Tests
-   /          \ (functions)
-  /____________\
+         /\
+        /  \      Integration Tests
+       /----\     (full scripts end-to-end)
+      /      \
+     /--------\   Unit Tests
+    /          \  (individual functions)
+   /____________\
 ```
+
+**Beginner's Rule:** Start with unit tests for your important functions. Add integration tests for critical workflows. Don't test everything - focus on what matters!
 
 ---
 
