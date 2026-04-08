@@ -660,35 +660,68 @@ aclchg user +x "#(pid -P $$ 2>/dev/null || echo 0)" # workaround
 
 ---
 
+## 🎓 Final Project: The Bash Session Manager (Tmux)
+
+Now that you've mastered windows, panes, and sessions, let's see how a professional Developer might automate their workspace. We'll examine the "Session Manager" — a script that launches a multi-pane environment for a specific project with one command.
+
+### What the Bash Session Manager Does:
+1. **Checks for Existing Sessions** to prevent creating duplicate workspaces.
+2. **Creates a Detached Session** in the background so it doesn't interrupt your current work.
+3. **Splits the Window** into a professional layout (e.g., Editor on left, Logs on top-right, Shell on bottom-right).
+4. **Sends Initial Commands** to each pane (e.g., `cd` into the project, start a dev server).
+5. **Names Every Window** for easy identification in the status bar.
+6. **Attaches to the Session** automatically once everything is ready.
+
+### Key Snippet: Automated Pane Setup
+The manager uses the `tmux send-keys` command to "type" into panes without you ever touching the keyboard.
+
+```bash
+#!/bin/bash
+# start_project.sh
+SESSION="my_project"
+
+# 1. Create the session and name the first window 'Editor'
+tmux new-session -d -s "$SESSION" -n 'Editor'
+
+# 2. Split the window horizontally (into left and right)
+tmux split-window -h -t "$SESSION"
+
+# 3. Split the right pane vertically (into top and bottom)
+tmux split-window -v -t "$SESSION:0.1"
+
+# 4. Send commands to the panes
+# Pane 0 (Left): Open Vim
+tmux send-keys -t "$SESSION:0.0" "vim ." C-m
+
+# Pane 1 (Top-Right): Start monitoring
+tmux send-keys -t "$SESSION:0.1" "htop" C-m
+
+# Pane 2 (Bottom-Right): Ready for commands
+tmux send-keys -t "$SESSION:0.2" "echo 'Ready for work!'" C-m
+
+# 5. Attach to the session
+tmux attach-session -t "$SESSION"
+```
+
+**Pro Tip:** Automating your workspace setup saves you 5 minutes every time you start working. Over a year, that's dozens of hours of "setup time" reclaimed!
+
+---
+
 ## ✅ Stack 61 Complete!
 
-You learned:
-- ✅ What terminal multiplexers are
-- ✅ tmux basics and commands
-- ✅ Pane management and layouts
-- ✅ Copy mode and scrolling
-- ✅ Configuration and customization
-- ✅ Scripting and automation
-- ✅ Synchronizing panes
-- ✅ screen basics
-- ✅ Practical use cases
-- ✅ Productivity tips
+Congratulations! You've successfully mastered "Terminal Multitasking"! You can now:
+- ✅ **Run multiple sessions** in a single window like a pro
+- ✅ **Detach and reattach** to sessions remotely without losing work
+- ✅ **Manage complex layouts** with windows and split panes
+- ✅ **Synchronize panes** to control multiple servers at once
+- ✅ **Automate your entire workspace** using custom tmux scripts
+- ✅ **Customize your environment** with a personalized `.tmux.conf`
 
-### Congratulations! Course Complete! 🎓
+### What's Next?
+In the next stack, we'll dive into **Kernel Tuning**. You'll learn how to "look under the hood" of Linux and optimize the core settings of your operating system for maximum performance!
 
----
-
-## 📚 Final Words
-
-You now have **complete Bash mastery**:
-- Core scripting (Stacks 1-12)
-- Intermediate tools (Stacks 13-25)
-- DevOps skills (Stacks 26-41)
-- Advanced topics (Stacks 42-52, 60-61)
-- Specialized infrastructure (Stacks 53-59)
-
-**Keep practicing and building!**
+**Next: Stack 62 - Kernel Tuning →**
 
 ---
 
-*End of Stack 61 - Course Complete!*
+*End of Stack 61*

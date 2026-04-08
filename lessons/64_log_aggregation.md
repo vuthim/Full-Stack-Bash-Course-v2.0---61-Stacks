@@ -460,17 +460,79 @@ sum(rate({job="myapp"} |= "ERROR"[5m])) by (level)
 
 ---
 
+## 🎓 Final Project: The Bash Log Shipper & Alerter
+
+Now that you've mastered centralized logging, let's see how a professional SRE might build a lightweight alternative to heavy agents. We'll examine the "Log Shipper" — a script that monitors local logs for critical errors and "ships" them to a central server (like Elasticsearch or Loki) while sending instant alerts to your team.
+
+### What the Bash Log Shipper & Alerter Does:
+1. **Monitors Log Files in Real-Time** using `tail -F` to watch for new entries.
+2. **Filters for "High-Priority" Patterns** (e.g., "FATAL", "CRITICAL", "Out of Memory").
+3. **Deduplicates Alerts** to ensure you don't get 1,000 notifications for the same repeating error.
+4. **Ships Data to Central APIs** using `curl` to POST logs directly into Elasticsearch or Loki.
+5. **Sends Instant Notifications** via Slack, Discord, or Email when a crash is detected.
+6. **Rotates Local Archive Logs** to ensure the shipper itself doesn't consume all your disk space.
+
+### Key Snippet: Real-Time Error Alerting
+The shipper uses a "continuous loop" pattern to watch a log file and take action the moment a specific word appears.
+
+```bash
+#!/bin/bash
+# watch_and_alert.sh
+
+log_file="/var/log/myapp/production.log"
+
+# tail -F: keep reading even if the file is rotated
+tail -n 0 -F "$log_file" | while read -r line; do
+    # Check if the line contains 'ERROR'
+    if echo "$line" | grep -q "ERROR"; then
+        echo "🚨 Critical Error Detected: $line"
+        
+        # Ship to central logging (Elasticsearch)
+        curl -s -X POST "http://elk-server:9200/alerts/_doc" \
+            -H "Content-Type: application/json" \
+            -d "{\"timestamp\": \"$(date)\", \"message\": \"$line\"}"
+            
+        # Send to Slack
+        # curl -X POST -d "payload={\"text\": \"Error: $line\"}" $SLACK_WEBHOOK
+    fi
+done
+```
+
+### Key Snippet: Shipping Logs to Loki (LogQL)
+Loki allows you to send logs via a simple HTTP API. Our script formats the data exactly how Loki wants it.
+
+```bash
+ship_to_loki() {
+    local message=$1
+    local timestamp=$(date +%s%N) # Nanoseconds for Loki
+    
+    # Loki expects a specific JSON structure with labels
+    local payload="{\"streams\": [{ \"stream\": { \"job\": \"bash-shipper\" }, \"values\": [ [ \"$timestamp\", \"$message\" ] ] }]}"
+    
+    curl -s -X POST "http://loki-server:3100/loki/api/v1/push" \
+        -H "Content-Type: application/json" \
+        -d "$payload"
+}
+```
+
+**Pro Tip:** While tools like Filebeat are great, a 50-line Bash shipper is often all you need for simple applications, and it consumes 90% less memory!
+
+---
+
 ## ✅ Stack 64 Complete!
 
-You learned:
-- ✅ ELK stack architecture
-- ✅ Filebeat installation and configuration
-- ✅ Logstash pipeline setup
-- ✅ Kibana visualization
-- ✅ Loki as lightweight alternative
-- ✅ Promtail agent configuration
-- ✅ Custom log shipping scripts
-- ✅ Alerting on log patterns
+Congratulations! You've successfully built a "Central Command" for your data! You can now:
+- ✅ **Centralize logs** from hundreds of servers into one dashboard
+- ✅ **Implement the ELK Stack** (Elasticsearch, Logstash, Kibana)
+- ✅ **Use Loki and Grafana** for high-performance, low-cost logging
+- ✅ **Build automated log shippers** using pure Bash and Curl
+- ✅ **Create real-time alerts** to catch production issues instantly
+- ✅ **Analyze global trends** across your entire infrastructure
+
+### What's Next?
+In the final stack of the course, we'll dive into **Service Mesh Basics**. You'll learn the cutting-edge technology used to manage complex microservice communications using Istio and Linkerd!
+
+**Next: Stack 65 - Service Mesh Basics →**
 
 ---
 

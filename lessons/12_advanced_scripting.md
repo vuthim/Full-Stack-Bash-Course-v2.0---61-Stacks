@@ -1241,11 +1241,20 @@ You have completed the **first 12 stacks** of the Bash course.
 
 ---
 
-## 🚀 You are ready for the next stage
+## ✅ Stack 12 Complete!
 
-You now have the Bash foundation needed to continue into testing, security, automation, production tooling, and infrastructure topics.
+Congratulations! You've successfully completed the core foundation of professional Bash scripting! You can now:
+- ✅ **Write robust scripts** with strict error handling (`set -euo pipefail`)
+- ✅ **Manage system signals** and clean up resources using `trap`
+- ✅ **Parse complex arguments** like a professional CLI using `getopts`
+- ✅ **Implement logging** and auditing for production environments
+- ✅ **Structure large projects** using modular functions and source files
+- ✅ **Debug complex issues** using tracing and dry-run modes
 
-Keep practicing and building. The terminal is your playground! 🐚
+### What's Next?
+Before we dive into scheduling and automation, we'll take a short detour into **Stack 12B: Bash Portability & POSIX**. You'll learn how to write scripts that work on any Linux or Unix system, not just those with modern Bash!
+
+**Next: Stack 12B - Bash Portability & POSIX →**
 
 ---
 
