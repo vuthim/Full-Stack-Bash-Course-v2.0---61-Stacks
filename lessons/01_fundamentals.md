@@ -62,12 +62,12 @@ VERB [ADVERBS] [OBJECTS]
 command [options] [arguments] 
 
 Example: ls -l /home
-    │   │   │
-    │   │   └── OBJECT: What to act on (/home directory)
-    │   │      
-    │   └────── ADVERB: How to act (-l = long/detailed format)
-    │           
-    └────────── VERB: What to do (ls = list files)
+         │   │   │
+         │   │   └── OBJECT: What to act on (/home directory)
+         │   │      
+         │   └────── ADVERB: How to act (-l = long/detailed format)
+         │           
+         └────────── VERB: What to do (ls = list files)
 ```
 
 ### Common Options (Like Adverbs - They Modify How Commands Work)

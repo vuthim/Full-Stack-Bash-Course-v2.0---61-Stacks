@@ -1,11 +1,20 @@
-#!/bin/bash 
-echo "My Name is ZoneClone"
+# Print your name (replace [Your Name] with your actual name)
+echo "My name is [Your Name]"
 
-#Display calendar
-cal
-# Show logged in users
+# See today's date
+date
+
+# Show what day it is
+date +"%A, %B %d, %Y"
+
+# Check who you are logged in as
+whoami
+
+# See who else is on the system
 who
 
+# Look at a calendar
+cal
 
-
-
+# Look at this month's calendar with today highlighted
+cal -3
