@@ -574,3 +574,5 @@ In the next stack, we'll dive into **Testing Bash Scripts**. You'll learn how to
 ---
 
 *End of Stack 21*
+- **Previous:** [Stack 20 → Database Operations](20_database_ops.md)
+- **Next:** [Stack 22 - Testing Bash Scripts](22_testing_bash.md) 

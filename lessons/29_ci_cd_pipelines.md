@@ -445,3 +445,5 @@ In the next stack, we'll dive into **Logging Best Practices**. You'll learn how 
 ---
 
 *End of Stack 29*
+- **Previous:** [Stack 28 → Package Management](28_package_management.md)
+- **Next:** [Stack 30 - Logging Best Practices](30_logging.md)

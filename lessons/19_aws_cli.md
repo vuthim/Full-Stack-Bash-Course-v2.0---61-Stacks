@@ -614,3 +614,5 @@ In the next stack, we'll dive into **Database Operations**. You'll learn how to 
 ---
 
 *End of Stack 19*
+- **Previous:** [Stack 18 → System Monitoring](18_system_monitoring.md)
+- **Next:** [Stack 20 - Database Operations](20_database_ops.md)

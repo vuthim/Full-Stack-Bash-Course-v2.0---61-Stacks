@@ -370,3 +370,5 @@ In the next stack, we'll dive into **NFS, Samba, and SSHFS**. You'll learn how t
 ---
 
 *End of Stack 33*
+-- **Previous:** [Stack 32 → User Management](32_user_management.md)
+-- **Next:** [Stack 34 - NFS, Samba, SSHFS](34_nfs_samba.md)

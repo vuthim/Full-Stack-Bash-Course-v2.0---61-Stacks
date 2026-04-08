@@ -313,3 +313,5 @@ In the next stack, we'll dive into **Raspberry Pi Projects**. You'll learn how t
 ---
 
 *End of Stack 41*
+- **Previous:** [Stack 40 → GitLab CI/CD](40_gitlab_ci.md)
+-- **Next:** [Stack 42 - Raspberry Pi Projects](42_raspberry_pi.md)

@@ -383,3 +383,5 @@ In the next stack, we'll dive into **Load Balancing**. You'll learn how to distr
 ---
 
 *End of Stack 47*
+- **Previous:** [Stack 46 → Career & Production](46_career_production.md)   
+-- **Next:** [Stack 48 - Load Balancing](48_load_balancing.md)

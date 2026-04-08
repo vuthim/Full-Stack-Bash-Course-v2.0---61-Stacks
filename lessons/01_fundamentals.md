@@ -206,5 +206,5 @@ You learned:
 ### Next: Stack 2 → File & Directory Operations
 
 ---
-
-*[Continue to Stack 2 when ready...]*
+-- **Previous:** [Stack 0 → Contents](00_contents.md) | 
+-- **Next:** [Stack 2 → File & Directory Operations](02_file_operations.md) --

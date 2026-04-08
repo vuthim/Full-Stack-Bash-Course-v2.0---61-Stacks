@@ -509,3 +509,5 @@ In the next stack, we'll dive into **Advanced Data Structures**. You'll learn ho
 ---
 
 *End of Stack 56*
+-- **Previous:** [Stack 55 → Advanced Debugging & Profiling](55_advanced_debugging.md)
+-- **Next:** [Stack 57 - Advanced Data Structures](57_data_structures.md)

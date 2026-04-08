@@ -662,3 +662,5 @@ In the next stack, we'll dive into **CI/CD Pipelines**. You'll learn how to auto
 ---
 
 *End of Stack 28*
+- **Previous:** [Stack 27 → Systemd Deep Dive](27_systemd.md)
+- **Next:** [Stack 29 - CI/CD Pipelines](29_ci_cd_pipelines.md)

@@ -345,3 +345,5 @@ In the next stack, we'll dive into **High Availability**. You'll learn how to gr
 ---
 
 *End of Stack 48*
+-- **Previous:** [Stack 47 → Advanced Git](47_advanced_git.md)
+-- **Next:** [Stack 49 - High Availability](49_high_availability.md)

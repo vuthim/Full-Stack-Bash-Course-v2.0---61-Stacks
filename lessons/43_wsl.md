@@ -293,3 +293,5 @@ In the next stack, we'll dive into **ShellCheck & Best Practices**. You'll learn
 ---
 
 *End of Stack 43*
+-- **Previous:** [Stack 42 → Raspberry Pi Projects](42_raspberry_pi.md)
+-- **Next:** [Stack 44 - ShellCheck & Best Practices](44_shellcheck.md)

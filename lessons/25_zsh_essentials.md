@@ -530,3 +530,6 @@ In the next stack, we'll dive into **Vim for Scripters**. You'll learn how to ed
 ---
 
 *End of Stack 25*
+
+- **Previous:** [Stack 24 → Advanced Scheduling](24_scheduling_advanced.md)
+- **Next:** [Stack 26 - Vim for Scripters](26_vim_editor.md)

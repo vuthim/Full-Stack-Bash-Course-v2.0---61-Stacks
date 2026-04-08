@@ -363,3 +363,6 @@ In the next stack, we'll dive into **Network Namespaces**. You'll learn the secr
 ---
 
 *End of Stack 62*
+
+--- **Previous:** [Stack 61 → tmux & Screen](61_tmux_screen.md)  
+-- **Next:** [Stack 63 - Network Namespaces](63_network_namespaces.md)

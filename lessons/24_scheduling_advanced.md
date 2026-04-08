@@ -479,3 +479,6 @@ In the next stack, we'll dive into **Zsh Essentials**. You'll learn how to super
 ---
 
 *End of Stack 24*
+
+- **Previous:** [Stack 23 → Security Scripting](23_security_scripting.md)
+- **Next:** [Stack 25 - Zsh Essentials](25_zsh_essentials.md)

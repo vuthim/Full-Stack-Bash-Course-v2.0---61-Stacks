@@ -350,3 +350,5 @@ In the next stack, we'll dive into **Ansible Essentials**. You'll learn how to m
 ---
 
 *End of Stack 37*
+-- **Previous:** [Stack 36 → Terraform Basics](36_terraform.md)
+-- **Next:** [Stack 38 - Ansible Essentials](38_ansible.md)

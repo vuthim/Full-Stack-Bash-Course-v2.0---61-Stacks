@@ -380,3 +380,5 @@ In the next stack, we'll dive into **System Hardening**. You'll learn how to loc
 ---
 
 *End of Stack 38*
+-- **Previous:** [Stack 37 → Monitoring Stack](37_monitoring_stack.md)
+-- **Next:** [Stack 39 - System Hardening](39_system_hardening.md)

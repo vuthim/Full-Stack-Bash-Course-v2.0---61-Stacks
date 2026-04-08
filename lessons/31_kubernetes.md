@@ -475,3 +475,5 @@ In the next stack, we'll dive into **User Management**. You'll learn how to secu
 ---
 
 *End of Stack 31*
+-- **Previous:** [Stack 30 → Logging Best Practices](30_logging.md)
+-- **Next:** [Stack 32 - User Management](32_user_management.md)

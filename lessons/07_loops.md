@@ -418,4 +418,5 @@ You learned:
 - ✅ Array iteration
 - ✅ Infinite loops
 
-### Next: Stack 8 → Functions →
+- **Previous:** [Stack 06 → Control Flow](06_control_flow.md)
+- **Next:** [Stack 08 - Functions](08_functions.md) 

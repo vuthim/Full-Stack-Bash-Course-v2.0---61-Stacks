@@ -536,3 +536,5 @@ In the next stack, we'll dive into **Advanced Debugging & Profiling**. You'll le
 ---
 
 *End of Stack 54*
+--- **Previous:** [Stack 53 → Terminal UI](53_terminal_ui.md)
+-- **Next:** [Stack 55 - Advanced Debugging & Profiling](55_advanced_debugging.md)

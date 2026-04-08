@@ -249,3 +249,5 @@ While this marks the end of the core curriculum, your journey is just beginning!
 ---
 
 *End of Stack 46*
+-- **Previous:** [Stack 45 → Advanced Patterns](45_advanced_patterns.md)
+-- **Next:** [Stack 47 - Advanced Git](47_advanced_git.md)

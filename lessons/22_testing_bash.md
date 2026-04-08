@@ -821,3 +821,5 @@ In the next stack, we'll dive into **Security Scripting**. You'll learn how to w
 ---
 
 *End of Stack 22*
+- **Previous:** [Stack 21 → Web Scraping](21_web_scraping.md)
+- **Next:** [Stack 23 - Security Scripting](23_security_scripting.md) 

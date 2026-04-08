@@ -404,4 +404,5 @@ You learned:
 - ✅ Named pipes
 - ✅ File descriptor manipulation
 
-### Next: Stack 10 → Regular Expressions →
+- **Previous:** [Stack 08 → Functions](08_functions.md)
+- **Next:** [Stack 10 - Regular Expressions](10_regular_expressions.md) 

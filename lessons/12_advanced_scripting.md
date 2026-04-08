@@ -1259,3 +1259,6 @@ Before we dive into scheduling and automation, we'll take a short detour into **
 ---
 
 *End of Stack 12 milestone*
+
+- **Previous:** [Stack 11 → Process Management](11_process_management.md)
+- **Next:** [Stack 12B - Bash Portability & POSIX](12b_portability_posix.md) 

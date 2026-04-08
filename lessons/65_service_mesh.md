@@ -46,19 +46,19 @@ With service mesh:
 ## 🏗️ Architecture
 
 ```
-┌──────────────────────────────────────────────┐
-│                 Service Mesh                  │
-│                                               │
-│  ┌─────────┐    ┌─────────┐    ┌─────────┐  │
-│  │ Service │───▶│  Sidecar│───▶│ Service │  │
-│  │   A     │    │  Proxy  │    │   B     │  │
-│  └─────────┘    └─────────┘    └─────────┘  │
-│                      │                        │
-│              ┌──────▼──────┐                  │
-│              │   Control   │                  │
-│              │   Plane    │                  │
-│              └─────────────┘                  │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────┐
+│                 Service Mesh                     │
+│                                                  │
+│  │ Service │───▶│  Sidecar│───▶│ Service │      │   
+│  ┌─────────┐     ┌─────────┐    ┌─────────┐      │
+│  │   A     │     │  Proxy  │    │   B     │      │
+│  └─────────┘     └─────────┘    └─────────┘      │
+│                      │                           │
+│              ┌──────▼──────┐                     │
+│              │   Control   │                     │
+│              │   Plane     │                     │   
+│              └─────────────┘                     │
+└─────────────────────────────────────────────    ─┘
 ```
 
 ---
@@ -539,4 +539,5 @@ From your first `hello_bash.sh` to managing global service meshes and kernel opt
 ---
 
 *End of Stack 65 - COURSE COMPLETE!* 🎉
-
+-- **Previous:** [Stack 64 → Log Aggregation](64_log_aggregation.md)
+-- **Next:** [Stack 66 - Final Project: The Ultimate Bash Toolkit](66_final_project.md)

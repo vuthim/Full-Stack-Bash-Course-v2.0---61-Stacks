@@ -701,3 +701,5 @@ In the next stack, we'll explore **Docker & Bash**. You'll learn how to package 
 ---
 
 *End of Stack 14*
+- **Previous:** [Stack 13 → Cron & Scheduling](13_cron_scheduling.md)
+- **Next:** [Stack 15 - Docker & Bash](15_docker_bash.md) 

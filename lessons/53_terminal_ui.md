@@ -508,3 +508,5 @@ In the next stack, we'll dive into **IPC (Inter-Process Communication)**. You'll
 ---
 
 *End of Stack 53*
+-- **Previous:** [Stack 52 → SSL/TLS](52_ssl_tls.md)
+-- **Next:** [Stack 54 - IPC Mechanisms](54_ipc_mechanisms.md)

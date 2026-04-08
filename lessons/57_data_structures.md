@@ -718,3 +718,5 @@ In the next stack, we'll dive into **API & Web Services**. You'll learn how to m
 ---
 
 *End of Stack 57*
+--- **Previous:** [Stack 56 → Security Auditing & Forensics](56_security_forensics.md)  
+-- **Next:** [Stack 58 - API & Web Services](58_api_services.md)

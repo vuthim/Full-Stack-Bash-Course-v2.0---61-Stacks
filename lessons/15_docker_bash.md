@@ -763,3 +763,5 @@ In the next stack, we'll dive into **SSH & Remote Management**. You'll learn how
 ---
 
 *End of Stack 15*
+- **Previous:** [Stack 14 → Git for Scripters](14_git_for_scripts.md)
+- **Next:** [Stack 16 - SSH & Remote Management](16_ssh_remote.md) 

@@ -407,4 +407,5 @@ You learned:
 - ✅ **cut** - Extracting columns
 - ✅ **Pipelines** - Combining tools for powerful processing
 
-### Next: Stack 5 → Variables & Data Types →
+- **Previous:** [Stack 3B → Quoting & Expansion](03b_quoting_expansion.md)
+- **Next:** [Stack 5 - Variables & Data Types](05_variables.md) 

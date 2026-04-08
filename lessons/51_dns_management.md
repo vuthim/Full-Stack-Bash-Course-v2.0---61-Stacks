@@ -366,3 +366,5 @@ In the next stack, we'll dive into **SSL/TLS**. You'll learn how to secure your 
 ---
 
 *End of Stack 51*
+-- **Previous:** [Stack 50 → Email Server Management](50_email_server.md)
+-- **Next:** [Stack 52 - SSL/TLS](52_ssl_tls.md)

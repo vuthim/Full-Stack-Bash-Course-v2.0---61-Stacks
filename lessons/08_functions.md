@@ -625,7 +625,8 @@ You learned:
 - ✅ Function libraries
 - ✅ Passing arrays to functions
 
-### Next: Stack 9 → Input/Output & Redirection →
+- **Previous:** [Stack 7 → Loops](07_loops.md)
+- **Next:** [Stack 09 - Input/Output & Redirection](09_io_redirection.md) 
 
 ---
 

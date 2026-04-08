@@ -517,3 +517,5 @@ In the next stack, we'll dive into **Terminal UI (TUI)**. You'll learn how to bu
 ---
 
 *End of Stack 52*
+-- **Previous:** [Stack 51 → DNS Management](51_dns_management.md)
+-- **Next:** [Stack 53 - Terminal UI](53_terminal_ui.md)

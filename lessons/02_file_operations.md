@@ -370,7 +370,6 @@ tail -f /var/log/syslog
 ---
 
 ## ✅ Stack 2 Complete!
-
 You learned:
 - ✅ Navigate directories (cd, pwd)
 - ✅ List files (various options like -l, -a, -h)
@@ -380,4 +379,8 @@ You learned:
 - ✅ File information (wc, file, stat)
 - ✅ Link files (ln)
 
-### Next: Stack 3 → File Viewing & Editing →
+### Navigation
+- **Previous:** [Stack 1 → Bash Fundamentals](01_fundamentals.md)
+- **Next:** [Stack 3 → File Viewing & Editing](03_file_viewing_editing.md)
+
+---

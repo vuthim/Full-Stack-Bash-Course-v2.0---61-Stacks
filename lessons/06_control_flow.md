@@ -425,4 +425,5 @@ You learned:
 - ✅ Exit status and $?
 - ✅ Building real scripts
 
-### Next: Stack 7 → Loops (for, while, until) →
+- **Previous:** [Stack 05 → 05_variables](05_variables.md)
+- **Next:** [Stack 7 - Loops](07_loops.md) 

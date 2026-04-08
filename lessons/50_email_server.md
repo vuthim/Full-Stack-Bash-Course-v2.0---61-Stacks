@@ -331,3 +331,5 @@ In the next stack, we'll dive into **DNS Management**. You'll learn how to manag
 ---
 
 *End of Stack 50*
+-- **Previous:** [Stack 49 → High Availability](49_high_availability.md)  
+-- **Next:** [Stack 51 - DNS Management](51_dns_management.md)

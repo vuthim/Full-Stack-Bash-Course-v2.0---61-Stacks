@@ -546,4 +546,5 @@ You learned:
 - ✅ Environment variables
 - ✅ Parameter expansion (defaults, removal)
 
-### Next: Stack 6 → Control Flow (if/else, case) →
+- **Previous:** [Stack 04_text_proccessing](04_text_processing.md)
+- **Next:** [Stack 6 - 06_control_flow](06_control_flow.md) 

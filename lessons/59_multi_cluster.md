@@ -654,3 +654,5 @@ While you've reached the end of the core expert track, your journey continues in
 ---
 
 *End of Stack 59*
+-- **Previous:** [Stack 58 → API & Web Services](58_api_services.md)
+-- **Next:** [Stack 60 - AWK Deep Dive](60_awk_deep_dive.md)

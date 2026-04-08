@@ -339,3 +339,5 @@ In the next stack, we'll dive into **WSL (Windows Subsystem for Linux)**. You'll
 ---
 
 *End of Stack 42*
+-- **Previous:** [Stack 41 → Performance Tuning](41_performance_tuning.md)
+-- **Next:** [Stack 43 - Windows WSL](43_wsl.md)

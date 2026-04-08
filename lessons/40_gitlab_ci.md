@@ -402,3 +402,5 @@ In the next stack, we'll dive into **Performance Tuning**. You'll learn how to o
 ---
 
 *End of Stack 40*
+- **Previous:** [Stack 39 → System Hardening](39_system_hardening.md)
+-- **Next:** [Stack 41 - Performance Tuning](41_performance_tuning.md)

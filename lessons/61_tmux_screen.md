@@ -725,3 +725,6 @@ In the next stack, we'll dive into **Kernel Tuning**. You'll learn how to "look 
 ---
 
 *End of Stack 61*
+
+-- **Previous:** [Stack 60 → AWK Deep Dive](60_awk_deep_dive.md)  
+-- **Next:** [Stack 62 - Kernel Tuning](62_kernel_tuning.md)

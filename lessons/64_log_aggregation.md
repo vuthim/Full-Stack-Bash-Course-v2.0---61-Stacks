@@ -537,3 +537,6 @@ In the final stack of the course, we'll dive into **Service Mesh Basics**. You'l
 ---
 
 *End of Stack 64*
+
+-- **Previous:** [Stack 63 → Network Namespaces](63_network_namespaces.md)
+-- **Next:** [Stack 65 - Service Mesh Basics](65_service_mesh.md)

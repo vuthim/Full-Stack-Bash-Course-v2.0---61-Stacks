@@ -323,3 +323,5 @@ In the next stack, we'll dive into **Advanced Patterns**. You'll learn how to ap
 ---
 
 *End of Stack 44*
+- **Previous:** [Stack 43 → Windows WSL](43_wsl.md)
+-- **Next:** [Stack 45 - Advanced Patterns](45_advanced_patterns.md)

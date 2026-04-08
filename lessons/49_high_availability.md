@@ -313,3 +313,5 @@ In the next stack, we'll dive into **Email Server Management**. You'll learn how
 ---
 
 *End of Stack 49*
+-- **Previous:** [Stack 48 → Load Balancing](48_load_balancing.md)  
+-- **Next:** [Stack 50 - Email Server Management](50_email_server.md)

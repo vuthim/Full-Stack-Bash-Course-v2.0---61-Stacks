@@ -635,3 +635,6 @@ In the next stack, we'll dive into **Package Management**. You'll learn how to a
 ---
 
 *End of Stack 27*
+
+- **Previous:** [Stack 26 → Vim for Scripters](26_vim_editor.md)
+- **Next:** [Stack 28 - Package Management](28_package_management.md)

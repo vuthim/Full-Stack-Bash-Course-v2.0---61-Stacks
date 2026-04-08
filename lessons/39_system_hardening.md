@@ -395,3 +395,5 @@ In the next stack, we'll dive into **GitLab CI/CD**. You'll learn how to build p
 ---
 
 *End of Stack 39*
+-- **Previous:** [Stack 38 → Ansible Essentials](38_ansible.md)
+-- **Next:** [Stack 40 - GitLab CI/CD](40_gitlab_ci.md)

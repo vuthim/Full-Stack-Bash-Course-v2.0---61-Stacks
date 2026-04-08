@@ -330,3 +330,5 @@ In the next stack, we'll dive into **Firewalls & Network Security**. You'll lear
 ---
 
 *End of Stack 34*
+-- **Previous:** [Stack 33 → LVM](33_lvm.md)
+-- **Next:** [Stack 35 - Firewall & Security](35_firewall.md)

@@ -538,3 +538,5 @@ In the next stack, we'll dive into **Git for Scripters**. You'll learn how to us
 ---
 
 *End of Stack 13*
+- **Previous:** [Stack 12b → Portability & POSIX](12b_portability_posix.md)
+- **Next:** [Stack 14 - Git for Scripters](14_git_for_scripts.md) 

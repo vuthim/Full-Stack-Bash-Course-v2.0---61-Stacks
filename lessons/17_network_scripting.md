@@ -831,3 +831,5 @@ In the next stack, we'll dive into **System Monitoring**. You'll learn how to bu
 ---
 
 *End of Stack 17*
+- **Previous:** [Stack 16 → SSH & Remote Management](16_ssh_remote.md)
+- **Next:** [Stack 18 - System Monitoring](18_system_monitoring.md) 

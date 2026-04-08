@@ -689,3 +689,5 @@ In the next stack, we'll dive into **Web Scraping**. You'll learn how to use Bas
 ---
 
 *End of Stack 20*
+- **Previous:** [Stack 19 → AWS CLI](19_aws_cli.md)
+- **Next:** [Stack 21 - Web Scraping](21_web_scraping.md)

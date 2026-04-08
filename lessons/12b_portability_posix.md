@@ -546,3 +546,5 @@ Now that your scripts are portable and robust, it's time to put them on autopilo
 ---
 
 *End of Stack 12B*
+- **Previous:** [Stack 12 → Advanced Scripting](12_advanced_scripting.md)
+- **Next:** [Stack 13 - Cron & Scheduling](13_cron_scheduling.md) 

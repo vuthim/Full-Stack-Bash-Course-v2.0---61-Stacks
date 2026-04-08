@@ -396,3 +396,5 @@ In the next stack, we'll dive into **Terraform Basics**. You'll learn how to tre
 ---
 
 *End of Stack 35*
+-- **Previous:** [Stack 34 → NFS, Samba, SSHFS](34_nfs_samba.md)
+-- **Next:** [Stack 36 - Terraform Basics](36_terraform.md)

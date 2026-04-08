@@ -599,3 +599,6 @@ In the next stack, we'll dive into **Tmux & Screen**. You'll learn how to manage
 ---
 
 *End of Stack 60*
+
+- - **Previous:** [Stack 59 → Multi-Cluster Orchestration](59_multi_cluster.md)
+- - **Next:** [Stack 61 - tmux & Screen](61_tmux_screen.md)

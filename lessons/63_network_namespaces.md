@@ -365,3 +365,6 @@ In the next stack, we'll dive into **Log Aggregation**. You'll learn how to coll
 ---
 
 *End of Stack 63*
+
+-- **Previous:** [Stack 62 → Kernel Tuning](62_kernel_tuning.md)
+-- **Next:** [Stack 64 - Log Aggregation](64_log_aggregation.md)

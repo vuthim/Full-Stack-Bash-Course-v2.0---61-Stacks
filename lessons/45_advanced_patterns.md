@@ -384,3 +384,5 @@ In the next stack, we'll dive into **Career & Production**. You'll learn how to 
 ---
 
 *End of Stack 45*
+- **Previous:** [Stack 44 → ShellCheck & Best Practices](44_shellcheck.md)
+-- **Next:** [Stack 46 - Career & Production](46_career_production.md)

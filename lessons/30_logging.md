@@ -414,3 +414,5 @@ In the next stack, we'll dive into **Kubernetes Basics**. You'll learn how to ma
 ---
 
 *End of Stack 30*
+- **Previous:** [Stack 29 → CI/CD Pipelines](29_ci_cd_pipelines.md)
+- **Next:** [Stack 31 - Kubernetes Basics](31_kubernetes.md)

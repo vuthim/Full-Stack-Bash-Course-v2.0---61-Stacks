@@ -739,3 +739,5 @@ In the next stack, we'll dive into **Network Scripting**. You'll learn how to di
 ---
 
 *End of Stack 16*
+- **Previous:** [Stack 15 → Docker & Bash](15_docker_bash.md)
+- **Next:** [Stack 17 - Network Scripting](17_network_scripting.md) 

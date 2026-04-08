@@ -411,3 +411,5 @@ In the next stack, we'll dive into **AWS CLI**. You'll learn how to take your Ba
 ---
 
 *End of Stack 18*
+- **Previous:** [Stack 17 → Network Scripting](17_network_scripting.md)
+- **Next:** [Stack 19 - AWS CLI](19_aws_cli.md) 

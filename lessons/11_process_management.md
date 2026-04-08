@@ -445,4 +445,5 @@ You learned:
 - ✅ Process priority (nice, renice)
 - ✅ Real-world process management
 
-### Next: Stack 12 → Advanced Scripting →
+- **Previous:** [Stack 10 → Regular Expressions](10_regular_expressions.md)
+- **Next:** [Stack 12 - Advanced Scripting](12_advanced_scripting.md) 

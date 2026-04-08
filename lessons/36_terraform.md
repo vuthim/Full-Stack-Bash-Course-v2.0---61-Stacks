@@ -409,3 +409,5 @@ In the next stack, we'll dive into **Prometheus & Grafana**. You'll learn how to
 ---
 
 *End of Stack 36*
+- **Previous:** [Stack 35 → Firewall & Security](35_firewall.md)
+-- **Next:** [Stack 37 - Monitoring Stack](37_monitoring_stack.md)

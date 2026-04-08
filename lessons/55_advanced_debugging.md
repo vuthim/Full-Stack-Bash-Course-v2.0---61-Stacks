@@ -532,3 +532,5 @@ In the next stack, we'll dive into **Security Auditing & Forensics**. You'll lea
 ---
 
 *End of Stack 55*
+-- **Previous:** [Stack 54 → IPC Mechanisms](54_ipc_mechanisms.md)
+-- **Next:** [Stack 56 - Security Auditing & Forensics](56_security_forensics.md)

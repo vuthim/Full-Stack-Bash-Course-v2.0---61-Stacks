@@ -685,3 +685,6 @@ In the next stack, we'll dive into **Advanced Scheduling**. You'll learn how to 
 ---
 
 *End of Stack 23*
+
+- **Previous:** [Stack 22 → Testing Bash Scripts](22_testing_bash.md)
+- **Next:** [Stack 24 - Advanced Scheduling](24_scheduling_advanced.md)

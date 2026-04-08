@@ -766,3 +766,5 @@ In the next stack, we'll dive into **Systemd Deep Dive**. You'll learn how to tu
 ---
 
 *End of Stack 26*
+- **Previous:** [Stack 25 → Zsh Essentials](25_zsh_essentials.md)
+- **Next:** [Stack 27 - Systemd Deep Dive](27_systemd.md)

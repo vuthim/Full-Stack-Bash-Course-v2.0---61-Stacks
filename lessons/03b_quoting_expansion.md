@@ -121,10 +121,9 @@ Congratulations! You've mastered the "Invisible Shield" of Bash! You can now:
 - ✅ **Configure shell options** like `nullglob` for robust automation
 - ✅ **Write defensive code** that doesn't crash on empty directories
 
-### What's Next?
-In the next stack, we'll dive into **Text Processing Tools**. You'll learn how to search, slice, and dice data using the industry standards: Grep, Sed, and AWK!
-
-**Next: Stack 4 - Text Processing Tools →**
+### Navigation
+- **Previous:** [Stack 3B → Quoting & Expansion](03b_quoting_expansion.md)
+- **Next:** [Stack 4 - Text Processing Tools](04_text_processing.md)
 
 ---
 

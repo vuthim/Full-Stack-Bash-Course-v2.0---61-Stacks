@@ -572,3 +572,5 @@ In the next stack, we'll dive into **Multi-Cluster Orchestration**. You'll learn
 ---
 
 *End of Stack 58*
+--- **Previous:** [Stack 57 → Advanced Data Structures](57_data_structures.md)  
+-- **Next:** [Stack 59 - Multi-Cluster Orchestration](59_multi_cluster.md)

@@ -363,3 +363,5 @@ In the next stack, we'll dive into **LVM (Logical Volume Management)**. You'll l
 ---
 
 *End of Stack 32*
+-- **Previous:** [Stack 31 → Kubernetes Basics](31_kubernetes.md)
+-- **Next:** [Stack 33 - LVM](33_lvm.md)

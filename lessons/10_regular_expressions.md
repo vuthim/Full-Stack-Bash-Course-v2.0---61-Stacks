@@ -372,4 +372,5 @@ You learned:
 - ✅ Common real-world patterns
 - ✅ Email, phone, IP validation
 
-### Next: Stack 11 → Process Management →
+- **Previous:** [Stack 09 → Input/Output & Redirection](09_io_redirection.md)
+- **Next:** [Stack 11 - Process Management](11_process_management.md) 
